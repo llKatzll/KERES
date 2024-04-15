@@ -161,7 +161,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -326,8 +326,8 @@ MonoBehaviour:
   _heatlh: 100
   _moveSpeed: 8.4
   _jumpPower: 5
-  _dashPower: 5
-  _gravitySpeed: 0
+  _dashPower: 15
+  _dashDuration: 0.2
   _isGround: 1
   groundLayer:
     serializedVersion: 2
@@ -934,8 +934,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.0015001297, y: 0.001999855, z: 0}
-    m_Extent: {x: 9.4536, y: 9.4444, z: 0}
+    m_Center: {x: -0.00090026855, y: -0.002699852, z: 0}
+    m_Extent: {x: 9.4545, y: 9.4451, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

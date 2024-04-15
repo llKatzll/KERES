@@ -12,7 +12,6 @@ public class MoveSet : MonoBehaviour
     //step 5.
     //step 6.
     //step 7.
-
     private KeyStrokeSystem keyStroke;
 
     Rigidbody2D rigid;
@@ -21,18 +20,22 @@ public class MoveSet : MonoBehaviour
     Animator anim;
     DirectionCheck directionCheck;
 
-
+    [Header("BaseStat")]
     public float _heatlh = 100f;
 
     [Header("Speed")]
     public float _moveSpeed;
     public float _jumpPower;
     public float _dashPower;
-    public float _gravitySpeed;
+    public float _dashDuration;
 
+    [Header("GroundCheck")]
     public bool _isGround = true;
+    static float _originalGravityScale;
+
 
     private Vector2 moveInput;
+    public LayerMask groundLayer;
 
     private void Awake()
     {
@@ -43,13 +46,17 @@ public class MoveSet : MonoBehaviour
         keyStroke = GetComponent<KeyStrokeSystem>();
         anim = GetComponent<Animator>();
         directionCheck = GetComponent<DirectionCheck>();
+
         if (directionCheck == null)
         {
             // 만약 DirectionCheck 컴포넌트가 없다면 오류를 출력합니다.
             Debug.LogError("DirectionCheck 컴포넌트를 찾을 수 없습니다.");
         }
+
+        _originalGravityScale = rigid.gravityScale;
     }
 
+    #region 움직임
     public void Moving()
     {
         float x = Input.GetAxisRaw("Horizontal");
@@ -69,9 +76,10 @@ public class MoveSet : MonoBehaviour
             anim.SetBool(AnimationStrings.IsMove, false);
         }
     }
+    #endregion
 
-    public LayerMask groundLayer;
 
+    #region 점프
     public void Jumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && directionCheck.IsGrounded)
@@ -81,29 +89,32 @@ public class MoveSet : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.x, _jumpPower);
         }
     }
+    #endregion
 
-
+    #region 대쉬
     public void Dashing()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0f;
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Debug.Log(mousePosition);
 
-            Vector3 playerPosition = transform.position;
+            Vector2 playerPosition = transform.position;
 
             Vector2 dashDirection = (mousePosition - playerPosition).normalized;
 
             Debug.Log("Now Dashing");
-            rigid.velocity = new Vector2(0f, _dashPower);
-            
+            playerPosition = Vector2.Lerp(playerPosition, dashDirection, _dashDuration);
+
             anim.SetTrigger(AnimationStrings.Dash);
 
+            StartCoroutine(ResetGravity());
         }
     }
+    #endregion
 
+    #region 바라보는 방향
     [SerializeField]
     private bool _isFacingRight = true;
     public bool isFacingRight
@@ -131,9 +142,9 @@ public class MoveSet : MonoBehaviour
             isFacingRight = false;
         }
     }
+    #endregion
 
-
-
+    #region 커맨드 입력 받음
     public void OnCommandInput(Ecommands ecommands)
     {
         Debug.Log(message: "커맨드 입력 받음" + ecommands);
@@ -152,7 +163,7 @@ public class MoveSet : MonoBehaviour
 
         }
     }
-    
+    #endregion
 
     private void FixedUpdate()
     {
@@ -165,4 +176,11 @@ public class MoveSet : MonoBehaviour
         Jumping();
     }
 
+    #region 중력 초기화
+    IEnumerator ResetGravity()
+    {
+        yield return new WaitForSeconds(_dashDuration);
+        rigid.gravityScale = _originalGravityScale;
+    }
+    #endregion
 }
