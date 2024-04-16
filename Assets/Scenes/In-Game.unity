@@ -328,6 +328,7 @@ MonoBehaviour:
   _jumpPower: 7
   _dashPower: 100
   _dashDuration: 0.2
+  _dashBrakeAmount: 3
   _isGround: 1
   _dashCoolDown: 1
   _isFacingLeft: 1
@@ -932,8 +933,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.0058498383, y: -0.00069999695, z: 0}
-    m_Extent: {x: 9.44975, y: 9.4513, z: 0}
+    m_Center: {x: 0.0051498413, y: -0.00605011, z: 0}
+    m_Extent: {x: 9.45345, y: 9.45245, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

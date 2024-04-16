@@ -29,6 +29,8 @@ public class MoveSet : MonoBehaviour
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _dashPower;
     [SerializeField] private float _dashDuration;
+    [SerializeField] private float _dashBrakeAmountX;
+    [SerializeField] private float _dashBrakeAmountY;
 
     [Header("GroundCheck")]
     [SerializeField] private bool _isGround = true;
@@ -133,7 +135,7 @@ public class MoveSet : MonoBehaviour
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(_dashDuration);
-        rigid.velocity = new Vector2(0f, 0f);
+        rigid.velocity = new Vector2(rigid.velocity.x / _dashBrakeAmountX, rigid.velocity.y / _dashBrakeAmountY);
     }
     #endregion
 
@@ -193,10 +195,14 @@ public class MoveSet : MonoBehaviour
     #region 직접적으로 방향 전환
     private void Flip()
     {
-        if(_isFacingLeft)
+        if (_isFacingLeft)
+        {
             transform.localScale = new Vector2(2.5f, 2.5f);
+        }
         else
+        {
             transform.localScale = new Vector2(-2.5f, 2.5f);
+        }
     }
     #endregion
 
