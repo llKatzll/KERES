@@ -161,7 +161,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 1.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129923798}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6f7d807da6c6104a88944c4aab8195f, type: 3}
   m_Name: 
@@ -325,13 +325,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heatlh: 100
   _moveSpeed: 8.4
-  _jumpPower: 5
-  _dashPower: 15
+  _jumpPower: 7
+  _dashPower: 100
   _dashDuration: 0.2
   _isGround: 1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  _dashCoolDown: 1
   _isFacingRight: 1
 --- !u!95 &129923806
 Animator:
@@ -934,8 +932,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.00090026855, y: -0.002699852, z: 0}
-    m_Extent: {x: 9.4545, y: 9.4451, z: 0}
+    m_Center: {x: -0.002049923, y: 0.0027999878, z: 0}
+    m_Extent: {x: 9.45775, y: 9.4506, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

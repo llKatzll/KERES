@@ -21,21 +21,24 @@ public class MoveSet : MonoBehaviour
     DirectionCheck directionCheck;
 
     [Header("BaseStat")]
-    public float _heatlh = 100f;
+    [SerializeField] private float _heatlh = 100f;
 
-    [Header("Speed")]
-    public float _moveSpeed;
-    public float _jumpPower;
-    public float _dashPower;
-    public float _dashDuration;
+    [Header("Speed & Dash")]
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _jumpPower;
+    [SerializeField] private float _dashPower;
+    [SerializeField] private float _dashDuration;
 
     [Header("GroundCheck")]
-    public bool _isGround = true;
-    static float _originalGravityScale;
+    [SerializeField] private bool _isGround = true;
+    [SerializeField] static float _originalGravityScale;
 
+    [Header("CoolDown About Dash")]
+    [SerializeField] private float _dashCoolDown = 2f;
 
     private Vector2 moveInput;
-    public LayerMask groundLayer;
+    private LayerMask groundLayer;
+    [SerializeField] private bool _isFacingRight = false;
 
     private void Awake()
     {
@@ -65,11 +68,10 @@ public class MoveSet : MonoBehaviour
         if (x != 0f)
         {
             anim.SetBool(AnimationStrings.IsMove, true);
+            moveInput = new Vector2(x, 0f);
+            SetFacingDirection(moveInput);
             Vector2 moveDirection = new Vector2(x, 0f).normalized;
             transform.Translate(moveDirection * _moveSpeed * Time.deltaTime);
-
-            moveInput = new Vector2(-x, 0f);
-            SetFacingDirection(moveInput);
         }
         else
         {
@@ -105,28 +107,40 @@ public class MoveSet : MonoBehaviour
             Vector2 dashDirection = (mousePosition - playerPosition).normalized;
 
             Debug.Log("Now Dashing");
-            playerPosition = Vector2.Lerp(playerPosition, dashDirection, _dashDuration);
 
-            anim.SetTrigger(AnimationStrings.Dash);
+            // 대쉬 방향과 속도를 결정하여 이동
+            float dashSpeed = Vector2.Distance(playerPosition, mousePosition) / _dashDuration;
 
-            StartCoroutine(ResetGravity());
+            //대쉬시 바라보는 방향 수정
+            
+
+            // 대쉬 속도가 너무 클 경우 최대 속도로 제한
+            dashSpeed = Mathf.Clamp(dashSpeed, 0f, _dashPower);
+
+            Vector2 dashVelocity = dashDirection * dashSpeed;
+            rigid.velocity = dashVelocity;
+
+            
+
+            // 일정 시간 후에 속도 0, 허나 기술 사용 시 위 함수가 배제됨
+            StartCoroutine(StopDashing());
         }
+    }
+
+
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(_dashDuration);
+        rigid.velocity = new Vector2(0f, 0f);
     }
     #endregion
 
     #region 바라보는 방향
-    [SerializeField]
-    private bool _isFacingRight = true;
     public bool isFacingRight
     {
         get { return _isFacingRight; }
         private set
         {
-            if (_isFacingRight != value)
-            {
-                _isFacingRight = value;
-                transform.localScale *= new Vector2(-1, 1);
-            }
             _isFacingRight = value;
         }
     }
@@ -136,10 +150,14 @@ public class MoveSet : MonoBehaviour
         if (moveInput.x > 0 && !isFacingRight)
         {
             isFacingRight = true;
+            Debug.LogError("방향 꺾음 : 우측");
+            transform.localScale *= new Vector2(-1, 1);
         }
         else if (moveInput.x < 0 && isFacingRight)
         {
             isFacingRight = false;
+            Debug.LogError("방향 꺾음 : 좌측");
+            transform.localScale *= new Vector2(1, 1);
         }
     }
     #endregion
