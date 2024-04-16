@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,8 @@ public class MoveSet : MonoBehaviour
 
     private Vector2 moveInput;
     private LayerMask groundLayer;
-    [SerializeField] private bool _isFacingRight = false;
+
+    [SerializeField] private bool _isFacingLeft = true;
 
     private void Awake()
     {
@@ -136,28 +138,21 @@ public class MoveSet : MonoBehaviour
     #endregion
 
     #region 바라보는 방향
-    public bool isFacingRight
+    public bool IsFacingLeft
     {
-        get { return _isFacingRight; }
-        private set
-        {
-            _isFacingRight = value;
-        }
+        get { return _isFacingLeft; }
+        set { _isFacingLeft = value; }
     }
 
     private void SetFacingDirection(Vector2 moveInput)
     {
-        if (moveInput.x > 0 && !isFacingRight)
+        if (moveInput.x > 0)
         {
-            isFacingRight = true;
-            Debug.LogError("방향 꺾음 : 우측");
-            transform.localScale *= new Vector2(-1, 1);
+            _isFacingLeft = false;
         }
-        else if (moveInput.x < 0 && isFacingRight)
+        else if (moveInput.x < 0)
         {
-            isFacingRight = false;
-            Debug.LogError("방향 꺾음 : 좌측");
-            transform.localScale *= new Vector2(1, 1);
+            _isFacingLeft = true;
         }
     }
     #endregion
@@ -192,7 +187,18 @@ public class MoveSet : MonoBehaviour
     {
         Dashing();
         Jumping();
+        Flip();
     }
+
+    #region 직접적으로 방향 전환
+    private void Flip()
+    {
+        if(_isFacingLeft)
+            transform.localScale = new Vector2(2.5f, 2.5f);
+        else
+            transform.localScale = new Vector2(-2.5f, 2.5f);
+    }
+    #endregion
 
     #region 중력 초기화
     IEnumerator ResetGravity()

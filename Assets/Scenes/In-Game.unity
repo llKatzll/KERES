@@ -330,7 +330,7 @@ MonoBehaviour:
   _dashDuration: 0.2
   _isGround: 1
   _dashCoolDown: 1
-  _isFacingRight: 1
+  _isFacingLeft: 1
 --- !u!95 &129923806
 Animator:
   serializedVersion: 5
@@ -932,8 +932,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.002049923, y: 0.0027999878, z: 0}
-    m_Extent: {x: 9.45775, y: 9.4506, z: 0}
+    m_Center: {x: -0.0058498383, y: -0.00069999695, z: 0}
+    m_Extent: {x: 9.44975, y: 9.4513, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
