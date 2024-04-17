@@ -24,7 +24,7 @@ public enum Ecommands
 {
     ASDQ,
     WADQ,
-    WASDWWWQ,
+    WASDWWQ,
     SSDQ,
     SSADQ,
     ADADQ,
@@ -58,6 +58,9 @@ public class KeyStrokeSystem : MonoBehaviour
     public KeyCode[] ASE = { KeyCode.A, KeyCode.S, KeyCode.E };
     public KeyCode[] SAX = { KeyCode.S, KeyCode.A, KeyCode.X };
     public KeyCode[] WADQ = { KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.Q };
+    public KeyCode[] SSADQ = { KeyCode.S, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Q };
+    public KeyCode[] ADADQ = { KeyCode.A, KeyCode.D, KeyCode.A, KeyCode.D, KeyCode.Q };
+    public KeyCode[] DASQ = { KeyCode.D, KeyCode.A, KeyCode.S, KeyCode.Q };
 
 
     // 입력 받은 후 일정 시간 동안 대기할 시간 설정
@@ -110,13 +113,13 @@ public class KeyStrokeSystem : MonoBehaviour
         {
             OnCommandInput.Invoke(Ecommands.QWEASDQ);
         }
-        else if (CheckCommand(ASDQ))
-        {
-            OnCommandInput.Invoke(Ecommands.ASDQ);
-        }
         else if (CheckCommand(ASDASDQ))
         {
             OnCommandInput.Invoke(Ecommands.ASDASDQ);
+        }
+        else if (CheckCommand(ASDQ))
+        {
+            OnCommandInput.Invoke(Ecommands.ASDQ);
         }
         else if (CheckCommand(SDQ))
         {
@@ -126,10 +129,39 @@ public class KeyStrokeSystem : MonoBehaviour
         {
             OnCommandInput.Invoke(Ecommands.DSADDQ);
         }
+        else if (CheckCommand(ADADQ))
+        {
+            OnCommandInput.Invoke(Ecommands.ADADQ);
+        }
+        else if (CheckCommand(SSADQ))
+        {
+            OnCommandInput.Invoke(Ecommands.SSADQ);
+        }
         else if (CheckCommand(SSDQ))
         {
             OnCommandInput.Invoke(Ecommands.SSDQ);
         }
+        else if (CheckCommand(WASDWWQ))
+        {
+            OnCommandInput.Invoke(Ecommands.WASDWWQ);
+        }
+        else if (CheckCommand(DASQ))
+        {
+            OnCommandInput.Invoke(Ecommands.DASQ);
+        }
+        else if (CheckCommand(WADQ))
+        {
+            OnCommandInput.Invoke(Ecommands.WADQ);
+        }
+        else if (CheckCommand(ASE))
+        {
+            OnCommandInput.Invoke(Ecommands.ASE);
+        }
+        else if (CheckCommand(SAX))
+        {
+            OnCommandInput.Invoke(Ecommands.SAX);
+        }
+        
     }
 
     // 입력된 커맨드가 정의된 커맨드와 일치하는지 검사

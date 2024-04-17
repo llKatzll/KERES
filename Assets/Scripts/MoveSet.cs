@@ -46,8 +46,6 @@ public class MoveSet : MonoBehaviour
 
     private void Awake()
     {
-        FindObjectOfType<KeyStrokeSystem>().OnCommandInput.AddListener(OnCommandInput);
-
         rigid = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
         keyStroke = GetComponent<KeyStrokeSystem>();
@@ -162,27 +160,6 @@ public class MoveSet : MonoBehaviour
         else if (moveInput.x < 0)
         {
             _isFacingLeft = true;
-        }
-    }
-    #endregion
-
-    #region 커맨드 입력 받음
-    public void OnCommandInput(Ecommands ecommands)
-    {
-        Debug.Log(message: "커맨드 입력 받음" + ecommands);
-        Debug.Log(message: "여기서 Switch문 사용해서 원하는 애니메이션 재생");
-
-        switch (ecommands)
-        {
-            case Ecommands.ASDQ:
-                //으어으어으어어ㄴ앙랄라ㅏㅏ가낙ㄷ가당호오호호홍ㅇ
-                Debug.Log("ASDQ!");
-                break;
-            case Ecommands.WADQ:
-                //이아런아런ㅇㄹ여따가 기술 썼을때 그런ㄱ 것좀 서주저얼어억ㄱ
-                Debug.Log("WADQ!");
-                break;
-
         }
     }
     #endregion
