@@ -117,14 +117,6 @@ public class KeyStrokeSystem : MonoBehaviour
         {
             OnCommandInput.Invoke(Ecommands.ASDASDQ);
         }
-        else if (CheckCommand(ASDQ))
-        {
-            OnCommandInput.Invoke(Ecommands.ASDQ);
-        }
-        else if (CheckCommand(SDQ))
-        {
-            OnCommandInput.Invoke(Ecommands.SDQ);
-        }
         else if (CheckCommand(DSADDQ))
         {
             OnCommandInput.Invoke(Ecommands.DSADDQ);
@@ -137,9 +129,17 @@ public class KeyStrokeSystem : MonoBehaviour
         {
             OnCommandInput.Invoke(Ecommands.SSADQ);
         }
+        else if (CheckCommand(ASDQ))
+        {
+            OnCommandInput.Invoke(Ecommands.ASDQ);
+        }
         else if (CheckCommand(SSDQ))
         {
             OnCommandInput.Invoke(Ecommands.SSDQ);
+        }
+        else if (CheckCommand(SDQ))
+        {
+            OnCommandInput.Invoke(Ecommands.SDQ);
         }
         else if (CheckCommand(WASDWWQ))
         {

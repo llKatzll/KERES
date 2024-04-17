@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 129923803}
   - component: {fileID: 129923805}
   - component: {fileID: 129923806}
+  - component: {fileID: 129923808}
   - component: {fileID: 129923807}
   m_Layer: 7
   m_Name: Keres
@@ -293,7 +294,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129923798}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6f7d807da6c6104a88944c4aab8195f, type: 3}
   m_Name: 
@@ -311,6 +312,9 @@ MonoBehaviour:
   ASE: 610000007300000065000000
   SAX: 730000006100000078000000
   WADQ: 77000000610000006400000071000000
+  SSADQ: 7300000073000000610000006400000071000000
+  ADADQ: 6100000064000000610000006400000071000000
+  DASQ: 64000000610000007300000071000000
   timeToElapse: 2
 --- !u!114 &129923805
 MonoBehaviour:
@@ -384,6 +388,18 @@ MonoBehaviour:
   groundDistance: 0.05
   wallDistance: 0.2
   ceilingDistance: 0.05
+--- !u!114 &129923808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129923798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc63174bf9c39a143bc605e15227bb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &176736677
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,8 +951,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.002049923, y: 0.00054979324, z: 0}
-    m_Extent: {x: 15.56275, y: 12.064751, z: 0}
+    m_Center: {x: 0.0019001961, y: -0.00040006638, z: 0}
+    m_Extent: {x: 15.5606, y: 12.069, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
