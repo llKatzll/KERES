@@ -116,7 +116,14 @@ public class MoveSet : MonoBehaviour
             float dashSpeed = Vector2.Distance(playerPosition, mousePosition) / _dashDuration;
 
             //대쉬시 바라보는 방향 수정
-            
+            if(dashDirection.x > 0f)
+            {
+                _isFacingLeft = false;
+            }
+            else
+            {
+                _isFacingLeft = true;
+            }
 
             // 대쉬 속도가 너무 클 경우 최대 속도로 제한
             dashSpeed = Mathf.Clamp(dashSpeed, 0f, _dashPower);
