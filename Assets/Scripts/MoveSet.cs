@@ -104,14 +104,18 @@ public class MoveSet : MonoBehaviour
     #endregion
 
     #region 대쉬
-    //private bool isDash = false;
+    private bool isDash = false;
     public void Dashing()
     {
         GameObject _mouseLocater = GameObject.Find("MousePositionHelper");
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift) && isDash)
         {
-            //isDash = true;
+            Debug.Log("대쉬 쿨다운. 남은 잔여시간 : " + _dashCoolDown);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDash)
+        {
+            isDash = true;
             Debug.Log(_mouseLocater.transform.position);
 
             Vector2 mouseLocaterPos = new Vector2(_mouseLocater.transform.position.x, _mouseLocater.transform.position.y);
@@ -145,40 +149,23 @@ public class MoveSet : MonoBehaviour
 
             // 일정 시간 후에 속도 0, 허나 기술 사용 시 위 함수가 배제됨
             StartCoroutine(StopDashing());
+            StartCoroutine(DashCoolDown());
         }
     }
-
-    //private void UpdateDashState(float velocity)
-    //{
-    //    if (Mathf.Abs(velocity) >= 12f)
-    //    {
-    //        currentDashState = DashState.Dash;
-    //        Debug.Log("Dash1");
-    //        Debug.Log(velocity);
-    //    }
-    //    else if (Mathf.Abs(velocity) <= 6f)
-    //    {
-    //        currentDashState = DashState.Dash1;
-    //        Debug.Log("Dash2");
-    //        Debug.Log(velocity);
-    //    }
-    //    else if (Mathf.Abs(velocity) <= 1f)
-    //    {
-    //        currentDashState = DashState.Dash2;
-    //        Debug.Log("Dash3");
-    //        Debug.Log(velocity);
-    //    }
-    //    // 현재 애니메이션 상태를 Animator에 전달
-    //    anim.SetInteger("DashState", (int)currentDashState);
-    //}
 
 
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(_dashDuration);
-        //isDash = false;
+        
         rigid.velocity = new Vector2(rigid.velocity.x / _dashBrakeAmountX, rigid.velocity.y / _dashBrakeAmountY);
         
+    }
+
+    private IEnumerator DashCoolDown()
+    {
+        yield return new WaitForSeconds(_dashCoolDown);
+        isDash = false;
     }
     #endregion
 
@@ -212,13 +199,6 @@ public class MoveSet : MonoBehaviour
         Dashing();
         Jumping();
         Flip();
-        //if (isDash)
-        //{
-        //    // 캐릭터의 속도를 불러오고 대쉬 스테이트 업데이트
-        //    float velocity = rigid.velocity.x;
-        //    UpdateDashState(velocity);
-        //}
-
     }
 
     #region 직접적으로 방향 전환
