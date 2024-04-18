@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _arrowPointer;
+    
 
     private void Awake()
     {
-        _arrowPointer.SetActive(true);
+        
     }
     void Start()
     {

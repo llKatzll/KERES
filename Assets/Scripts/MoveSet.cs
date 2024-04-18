@@ -20,6 +20,7 @@ public class MoveSet : MonoBehaviour
     Transform tns;
     Animator anim;
     DirectionCheck directionCheck;
+    //GameObject FindGameObjectWithTag(string ) 마우스 로케이터를 찾은 뒤에 로케이터가 있는 곳으로 대쉬가 되도록 바꿔야한다.
 
     [Header("BaseStat")]
     [SerializeField] private float _heatlh = 100f;
@@ -51,6 +52,7 @@ public class MoveSet : MonoBehaviour
         keyStroke = GetComponent<KeyStrokeSystem>();
         anim = GetComponent<Animator>();
         directionCheck = GetComponent<DirectionCheck>();
+        
 
         if (directionCheck == null)
         {
@@ -59,6 +61,8 @@ public class MoveSet : MonoBehaviour
         }
 
         _originalGravityScale = rigid.gravityScale;
+
+        
     }
 
     #region 움직임
@@ -174,6 +178,7 @@ public class MoveSet : MonoBehaviour
         Dashing();
         Jumping();
         Flip();
+        //Debug.Log(_locaterPosition.transform.position);
     }
 
     #region 직접적으로 방향 전환
