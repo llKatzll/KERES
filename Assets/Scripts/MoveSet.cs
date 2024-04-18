@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class MoveSet : MonoBehaviour
 {
@@ -20,7 +17,6 @@ public class MoveSet : MonoBehaviour
     Transform tns;
     Animator anim;
     DirectionCheck directionCheck;
-    //GameObject FindGameObjectWithTag(string ) 마우스 로케이터를 찾은 뒤에 로케이터가 있는 곳으로 대쉬가 되도록 바꿔야한다.
 
     [Header("BaseStat")]
     [SerializeField] private float _heatlh = 100f;
@@ -43,7 +39,16 @@ public class MoveSet : MonoBehaviour
     private Vector2 moveInput;
     private LayerMask groundLayer;
 
+    private DashState currentDashState = DashState.Dash;
+
     [SerializeField] private bool _isFacingLeft = true;
+
+    public enum DashState
+    {
+        Dash,
+        Dash1,
+        Dash2,
+    }
 
     private void Awake()
     {
@@ -52,7 +57,6 @@ public class MoveSet : MonoBehaviour
         keyStroke = GetComponent<KeyStrokeSystem>();
         anim = GetComponent<Animator>();
         directionCheck = GetComponent<DirectionCheck>();
-        
 
         if (directionCheck == null)
         {
@@ -62,7 +66,7 @@ public class MoveSet : MonoBehaviour
 
         _originalGravityScale = rigid.gravityScale;
 
-        
+
     }
 
     #region 움직임
@@ -100,25 +104,31 @@ public class MoveSet : MonoBehaviour
     #endregion
 
     #region 대쉬
+    //private bool isDash = false;
     public void Dashing()
     {
+        GameObject _mouseLocater = GameObject.Find("MousePositionHelper");
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //isDash = true;
+            Debug.Log(_mouseLocater.transform.position);
 
-            Debug.Log(mousePosition);
+            Vector2 mouseLocaterPos = new Vector2(_mouseLocater.transform.position.x, _mouseLocater.transform.position.y);
 
             Vector2 playerPosition = transform.position;
 
-            Vector2 dashDirection = (mousePosition - playerPosition).normalized;
+            Vector2 dashDirection = (mouseLocaterPos - playerPosition).normalized;
 
             Debug.Log("Now Dashing");
 
             // 대쉬 방향과 속도를 결정하여 이동
-            float dashSpeed = Vector2.Distance(playerPosition, mousePosition) / _dashDuration;
+            float dashSpeed = Vector2.Distance(playerPosition, mouseLocaterPos) / _dashDuration;
+
+            anim.SetTrigger(AnimationStrings.Dash);
 
             //대쉬시 바라보는 방향 수정
-            if(dashDirection.x > 0f)
+            if (dashDirection.x > 0f)
             {
                 _isFacingLeft = false;
             }
@@ -133,18 +143,42 @@ public class MoveSet : MonoBehaviour
             Vector2 dashVelocity = dashDirection * dashSpeed;
             rigid.velocity = dashVelocity;
 
-            
-
             // 일정 시간 후에 속도 0, 허나 기술 사용 시 위 함수가 배제됨
             StartCoroutine(StopDashing());
         }
     }
 
+    //private void UpdateDashState(float velocity)
+    //{
+    //    if (Mathf.Abs(velocity) >= 12f)
+    //    {
+    //        currentDashState = DashState.Dash;
+    //        Debug.Log("Dash1");
+    //        Debug.Log(velocity);
+    //    }
+    //    else if (Mathf.Abs(velocity) <= 6f)
+    //    {
+    //        currentDashState = DashState.Dash1;
+    //        Debug.Log("Dash2");
+    //        Debug.Log(velocity);
+    //    }
+    //    else if (Mathf.Abs(velocity) <= 1f)
+    //    {
+    //        currentDashState = DashState.Dash2;
+    //        Debug.Log("Dash3");
+    //        Debug.Log(velocity);
+    //    }
+    //    // 현재 애니메이션 상태를 Animator에 전달
+    //    anim.SetInteger("DashState", (int)currentDashState);
+    //}
+
 
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(_dashDuration);
+        //isDash = false;
         rigid.velocity = new Vector2(rigid.velocity.x / _dashBrakeAmountX, rigid.velocity.y / _dashBrakeAmountY);
+        
     }
     #endregion
 
@@ -178,7 +212,13 @@ public class MoveSet : MonoBehaviour
         Dashing();
         Jumping();
         Flip();
-        //Debug.Log(_locaterPosition.transform.position);
+        //if (isDash)
+        //{
+        //    // 캐릭터의 속도를 불러오고 대쉬 스테이트 업데이트
+        //    float velocity = rigid.velocity.x;
+        //    UpdateDashState(velocity);
+        //}
+
     }
 
     #region 직접적으로 방향 전환
