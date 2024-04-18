@@ -5,11 +5,17 @@ using UnityEngine;
 public class KeyStroke : MonoBehaviour
 {
     private KeyStrokeSystem keyStroke;
+    private MoveSet moveSet;
+    private MousePositionLocater mousePosLocater;
+    private Animator animator;
 
     private void Awake()
     {
         keyStroke = GetComponent<KeyStrokeSystem>();
-        FindObjectOfType<KeyStrokeSystem>().OnCommandInput.AddListener(OnCommandInput);
+        animator = GetComponent<Animator>();
+        moveSet = GetComponent<MoveSet>();
+        keyStroke.OnCommandInput.AddListener(OnCommandInput);
+        //FindObjectOfType<KeyStrokeSystem>().OnCommandInput.AddListener(OnCommandInput);
     }
 
     #region 커맨드 입력 받음
@@ -21,46 +27,46 @@ public class KeyStroke : MonoBehaviour
         switch (ecommands)
         {
             case Ecommands.ASDQ:
-                
+                cmd_ASDQ();
                 break;
             case Ecommands.WADQ:
-                
+                cmd_WADQ();
                 break;
             case Ecommands.WASDWWQ:
-                
+                cmd_WASDWWQ();
                 break;
             case Ecommands.SSDQ:
-                
+                cmd_SSDQ();
                 break;
             case Ecommands.SSADQ:
-                
+                cmd_SSADQ();
                 break;
             case Ecommands.ADADQ:
-                
+                cmd_ADADQ();
                 break;
             case Ecommands.QWEASDQ:
-               
+                cmd_QWEASDQ();
                 break;
             case Ecommands.SDQ:
-                
+                cmd_ASE();
                 break;
             case Ecommands.ASE:
-                
+                cmd_ASE();
                 break;
             case Ecommands.ADDQ:
-                
+                cmd_ADDQ();
                 break;
             case Ecommands.ASDASDQ:
-                
+                cmd_ASDASDQ();
                 break;
             case Ecommands.DSADDQ:
-                
+                cmd_DSADDQ();
                 break;
             case Ecommands.DASQ:
-                
+                cmd_DASQ();
                 break;
             case Ecommands.SAX:
-                
+                cmd_SAX();
                 break;
         }
     }
@@ -70,6 +76,7 @@ public class KeyStroke : MonoBehaviour
     void cmd_SAX()
     {
         Debug.Log("SAX!");
+        PlayAnimation("SAX");
     }
 
     void cmd_DASQ()
@@ -137,4 +144,23 @@ public class KeyStroke : MonoBehaviour
         Debug.Log("ADADQ!");
     }
     #endregion
+
+    void PlayAnimation(string skillName)
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 playerPosition = transform.position;
+
+        Vector2 skillDirection = (mousePosition - playerPosition).normalized;
+
+        if (skillDirection.x > 0f)
+        {
+            moveSet.IsFacingLeft = false;
+        }
+        else
+        {
+            moveSet.IsFacingLeft = true;
+        }
+        animator.Play(skillName);
+    }
 }

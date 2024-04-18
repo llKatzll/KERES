@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 129923800}
   - component: {fileID: 129923799}
   - component: {fileID: 129923803}
+  - component: {fileID: 129923808}
   - component: {fileID: 129923805}
   - component: {fileID: 129923806}
-  - component: {fileID: 129923808}
   - component: {fileID: 129923807}
   m_Layer: 7
   m_Name: Keres
@@ -951,8 +951,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0019001961, y: -0.00040006638, z: 0}
-    m_Extent: {x: 15.5606, y: 12.069, z: 0}
+    m_Center: {x: -0.0048999786, y: -0.00085020065, z: 0}
+    m_Extent: {x: 15.5639, y: 12.06535, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
