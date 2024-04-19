@@ -42,6 +42,7 @@ public class MoveSet : MonoBehaviour
     private DashState currentDashState = DashState.Dash;
 
     [SerializeField] private bool _isFacingLeft = true;
+    //skill 사용여부
     [SerializeField] private bool _isSkillUsing = false;
 
     public enum DashState

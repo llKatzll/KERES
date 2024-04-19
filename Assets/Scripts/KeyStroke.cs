@@ -9,11 +9,14 @@ public class KeyStroke : MonoBehaviour
     private MousePositionLocater mousePosLocater;
     private Animator animator;
 
+    private Rigidbody2D _rigid;
+
     private void Awake()
     {
         keyStroke = GetComponent<KeyStrokeSystem>();
         animator = GetComponent<Animator>();
         moveSet = GetComponent<MoveSet>();
+        _rigid = GetComponent<Rigidbody2D>();
         keyStroke.OnCommandInput.AddListener(OnCommandInput);
         //FindObjectOfType<KeyStrokeSystem>().OnCommandInput.AddListener(OnCommandInput);
     }
@@ -48,7 +51,7 @@ public class KeyStroke : MonoBehaviour
                 cmd_QWEASDQ();
                 break;
             case Ecommands.SDQ:
-                cmd_ASE();
+                cmd_SDQ();
                 break;
             case Ecommands.ASE:
                 cmd_ASE();
@@ -76,8 +79,16 @@ public class KeyStroke : MonoBehaviour
     void cmd_SAX()
     {
         Debug.Log("SAX!");
-        
         PlayAnimation("SAX");
+        //float _flightLocate = Mathf.Sin(1f); //사인 그래프 이용하여 도약 후 마무리
+        if (moveSet.IsFacingLeft)
+        {
+            _rigid.AddForce(Vector2.left * 10f, ForceMode2D.Impulse);
+        }
+        else
+        {
+            _rigid.AddForce(Vector2.right * 10f, ForceMode2D.Impulse);
+        }
     }
 
     void cmd_DASQ()
