@@ -337,7 +337,7 @@ MonoBehaviour:
   _dashBrakeAmountX: 5
   _dashBrakeAmountY: 7
   _isGround: 1
-  _dashCoolDown: 1
+  _dashCoolDown: 0.8
   _isFacingLeft: 1
 --- !u!95 &129923806
 Animator:
@@ -952,8 +952,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0016498566, y: 0.0019497871, z: 0}
-    m_Extent: {x: 15.55655, y: 12.05485, z: 0}
+    m_Center: {x: 0.0005502701, y: 0.0015001297, z: 0}
+    m_Extent: {x: 15.56775, y: 12.0627, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

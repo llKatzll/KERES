@@ -76,6 +76,7 @@ public class KeyStroke : MonoBehaviour
     void cmd_SAX()
     {
         Debug.Log("SAX!");
+        
         PlayAnimation("SAX");
     }
 

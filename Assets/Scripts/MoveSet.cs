@@ -42,6 +42,7 @@ public class MoveSet : MonoBehaviour
     private DashState currentDashState = DashState.Dash;
 
     [SerializeField] private bool _isFacingLeft = true;
+    [SerializeField] private bool _isSkillUsing = false;
 
     public enum DashState
     {
@@ -189,15 +190,26 @@ public class MoveSet : MonoBehaviour
     }
     #endregion
 
+    public void SetSkillUsing(bool value)
+    {
+        _isSkillUsing = value;
+    }
+
     private void FixedUpdate()
     {
-        Moving();
+        if (!_isSkillUsing)
+        {
+            Moving();
+        }
     }
 
     private void Update()
     {
-        Dashing();
-        Jumping();
+        if (!_isSkillUsing)
+        {
+            Dashing();
+            Jumping();
+        }
         Flip();
     }
 
