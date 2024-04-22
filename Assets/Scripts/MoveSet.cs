@@ -17,6 +17,7 @@ public class MoveSet : MonoBehaviour
     Transform tns;
     Animator anim;
     DirectionCheck directionCheck;
+    Ghost ghost;
 
     [Header("BaseStat")]
     [SerializeField] private float _heatlh = 100f;
@@ -39,18 +40,9 @@ public class MoveSet : MonoBehaviour
     private Vector2 moveInput;
     private LayerMask groundLayer;
 
-    private DashState currentDashState = DashState.Dash;
-
     [SerializeField] private bool _isFacingLeft = true;
     //skill 사용여부
     [SerializeField] private bool _isSkillUsing = false;
-
-    public enum DashState
-    {
-        Dash,
-        Dash1,
-        Dash2,
-    }
 
     private void Awake()
     {
@@ -59,6 +51,7 @@ public class MoveSet : MonoBehaviour
         keyStroke = GetComponent<KeyStrokeSystem>();
         anim = GetComponent<Animator>();
         directionCheck = GetComponent<DirectionCheck>();
+        ghost = GetComponent<Ghost>();
 
         if (directionCheck == null)
         {
@@ -107,6 +100,7 @@ public class MoveSet : MonoBehaviour
 
     #region 대쉬
     private bool isDash = false;
+
     public void Dashing()
     {
         GameObject _mouseLocater = GameObject.Find("MousePositionHelper");
@@ -146,6 +140,8 @@ public class MoveSet : MonoBehaviour
             // 대쉬 속도가 너무 클 경우 최대 속도로 제한
             dashSpeed = Mathf.Clamp(dashSpeed, 0f, _dashPower);
 
+            ghost.makeGhost = true;
+
             Vector2 dashVelocity = dashDirection * dashSpeed;
             rigid.velocity = dashVelocity;
 
@@ -159,7 +155,7 @@ public class MoveSet : MonoBehaviour
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(_dashDuration);
-        
+        ghost.makeGhost = false;
         rigid.velocity = new Vector2(rigid.velocity.x / _dashBrakeAmountX, rigid.velocity.y / _dashBrakeAmountY);
         
     }

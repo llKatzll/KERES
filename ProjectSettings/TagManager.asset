@@ -49,6 +49,9 @@ TagManager:
   - name: Enemy
     uniqueID: 1853208391
     locked: 0
+  - name: Ghost
+    uniqueID: 4009237057
+    locked: 0
   - name: Keres
     uniqueID: 1292123431
     locked: 0

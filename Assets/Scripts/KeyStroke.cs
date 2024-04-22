@@ -8,6 +8,7 @@ public class KeyStroke : MonoBehaviour
     private MoveSet moveSet;
     private MousePositionLocater mousePosLocater;
     private Animator animator;
+    private Ghost ghost;
 
     private Rigidbody2D _rigid;
 
