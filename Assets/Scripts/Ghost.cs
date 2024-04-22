@@ -43,6 +43,7 @@ public class Ghost : MonoBehaviour
                 Destroy(ghostObject, 0.8f); // ¿‹ªÛ ªË¡¶
 
                 this.ghostDelayTime = this.ghostDelay;
+                
             }
         }
     }
