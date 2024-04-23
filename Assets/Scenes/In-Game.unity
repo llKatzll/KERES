@@ -417,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostDelay: 0.02
   playerSpriteRenderer: {fileID: 129923801}
+  orderOffset: 1
   makeGhost: 0
 --- !u!1 &176736677
 GameObject:
@@ -969,8 +970,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0027999878, y: 0.0025000572, z: 0}
-    m_Extent: {x: 15.5637, y: 12.058701, z: 0}
+    m_Center: {x: 0.0070500374, y: -0.0037999153, z: 0}
+    m_Extent: {x: 15.561649, y: 12.062201, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
