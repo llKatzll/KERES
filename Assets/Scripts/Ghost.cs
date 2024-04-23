@@ -29,7 +29,7 @@ public class Ghost : MonoBehaviour
                 GameObject ghostObject = new GameObject("Ghost");
                 SpriteRenderer ghostRenderer = ghostObject.AddComponent<SpriteRenderer>();
                 ghostRenderer.sprite = playerSpriteRenderer.sprite; // 플레이어의 스프라이트 설정
-                ghostRenderer.color = new Color(1f, 1f, 1f, 0.6f); // 투명도 설정
+                ghostRenderer.color = new Color(1f, 1f, 1f, 0.3f); // 투명도 설정
 
                 // 잔상의 위치 설정
                 ghostObject.transform.position = transform.position - new Vector3(0f, 0.1f, 0f); // 플레이어 위치에서 약간 위로 이동
