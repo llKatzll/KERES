@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - LocaterUI
+  - Enemy
   layers:
   - Default
   - TransparentFX
