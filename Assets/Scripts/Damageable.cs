@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Damageable : MonoBehaviour
 {
-    [SerializeField] private float _hp;
+    private GameManager gm;
 
-    private void Awake()
-    {
-        
-    }
     void Start()
     {
         
@@ -17,6 +13,11 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    void Damage(float damage)
     {
         
     }
