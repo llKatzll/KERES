@@ -36,6 +36,7 @@ public enum Ecommands
     DSADDQ,
     DASQ,
     SAX,
+    DAQ,
 }
 
 
@@ -62,6 +63,7 @@ public class KeyStrokeSystem : MonoBehaviour
     public KeyCode[] ADADQ = { KeyCode.A, KeyCode.D, KeyCode.A, KeyCode.D, KeyCode.Q };
     public KeyCode[] DASQ = { KeyCode.D, KeyCode.A, KeyCode.S, KeyCode.Q };
     public KeyCode[] ADDQ = { KeyCode.A, KeyCode.D, KeyCode.D, KeyCode.Q };
+    public KeyCode[] DAQ = { KeyCode.D, KeyCode.A, KeyCode.Q };
 
 
     // 입력 받은 후 일정 시간 동안 대기할 시간 설정
@@ -153,6 +155,10 @@ public class KeyStrokeSystem : MonoBehaviour
         else if (CheckCommand(DASQ))
         {
             OnCommandInput.Invoke(Ecommands.DASQ);
+        }
+        else if (CheckCommand(DAQ))
+        {
+            OnCommandInput.Invoke(Ecommands.DAQ);
         }
         else if (CheckCommand(WADQ))
         {

@@ -9,6 +9,7 @@ public class KeyStroke : MonoBehaviour
     private MousePositionLocater mousePosLocater;
     private Animator animator;
     private Ghost ghost;
+    private KeresStatus _keres;
 
     private Rigidbody2D _rigid;
 
@@ -18,6 +19,7 @@ public class KeyStroke : MonoBehaviour
         animator = GetComponent<Animator>();
         moveSet = GetComponent<MoveSet>();
         _rigid = GetComponent<Rigidbody2D>();
+        _keres = GetComponent<KeresStatus>();
         keyStroke.OnCommandInput.AddListener(OnCommandInput);
         //FindObjectOfType<KeyStrokeSystem>().OnCommandInput.AddListener(OnCommandInput);
     }
@@ -69,6 +71,9 @@ public class KeyStroke : MonoBehaviour
             case Ecommands.DASQ:
                 cmd_DASQ();
                 break;
+            case Ecommands.DAQ:
+                cmd_DAQ();
+                break;
             case Ecommands.SAX:
                 cmd_SAX();
                 break;
@@ -95,6 +100,12 @@ public class KeyStroke : MonoBehaviour
     void cmd_DASQ()
     {
         Debug.Log("DASQ!");
+    }
+
+    void cmd_DAQ()
+    {
+        Debug.Log("DAQ!");
+        _keres._knifeStack++;
     }
 
     void cmd_ASDQ()

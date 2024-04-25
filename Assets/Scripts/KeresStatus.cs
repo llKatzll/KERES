@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class KeresStatus : MonoBehaviour
 {
+    public int _knifeStack = 3;
+
+    private int KnifeStack
+    {
+        get { return _knifeStack; }
+        set { _knifeStack = value; }
+    }
+
     private void Awake()
     {
-        
+        _knifeStack = 0;
     }
+
     void Start()
     {
         

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 
 public class Damageable : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Damageable : MonoBehaviour
 
     void Start()
     {
-        
+        gm = GetComponent<GameManager>();
     }
 
     // Update is called once per frame
