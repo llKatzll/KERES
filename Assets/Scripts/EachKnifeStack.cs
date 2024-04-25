@@ -22,7 +22,7 @@ public class EachKnifeStack : MonoBehaviour
         get { return _stackOn; }
         set { _stackOn = value; }
     }
-
+    //이런 젠장 !화가난다!
     void IsStackON(bool StackON)
     {
         if(StackON == true)
