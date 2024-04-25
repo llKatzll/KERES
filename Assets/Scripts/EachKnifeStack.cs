@@ -3,45 +3,35 @@ using UnityEngine.UI;
 
 public class EachKnifeStack : MonoBehaviour
 {
-    [SerializeField] private bool _stackON = false;
-
-    Image image;
+    public bool _stackOn = false;
+    private Image _image;
 
     private void Awake()
     {
-        image = GetComponent<Image>();
-    }
-
-    void Start()
-    {
-        image.color = Color.black;
+        _image = GetComponent<Image>();
+        _image.color = Color.black;
     }
 
     private void Update()
     {
-        CheckStacked();
+        
     }
 
     public bool StackON
     {
-        get { return _stackON; } 
-        set { _stackON = value; }
+        get { return _stackOn; }
+        set { _stackOn = value; }
     }
 
-    void CheckStacked()
+    void IsStackON(bool StackON)
     {
-        Transform parentObj = transform.parent;
-
-        if (parentObj != null)
+        if(StackON == true)
         {
-            KeresStatus _keresStatus = parentObj.GetComponent<KeresStatus>();
-            if (_keresStatus != null)
-            {
-                if (StackON == true)
-                {
-                    image.color = Color.white;
-                }
-            }
+            _image.color = Color.white;
+        }
+        else
+        {
+            _image.color = Color.black;
         }
     }
 }

@@ -7,67 +7,71 @@ public class KeresStatus : MonoBehaviour
 {
     [SerializeField] private GameObject[] _knives = new GameObject[3];
 
-    public int _knifeStack = 3;
+    public int _knifeStack = 0;
 
-    Image image;
-    EachKnifeStack _eachKnife;
+    private void Awake()
+    {
+        ZeroStack();
+    }
+
+    private void Start()
+    {
+
+    }
+
+    private void Update()
+    {
+
+    }
 
     public int KnifeStack
     {
         get { return _knifeStack; }
-        set { if (_knifeStack == 3) return; _knifeStack = value; }
+        set { if (_knifeStack == 0) return; _knifeStack = value; }
     }
 
-    private void Awake()
+    void ZeroStack()
     {
-        _knifeStack = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        SetKnifeStacked();
-    }
-
-    public void SetKnifeStacked()
-    {
-        if (_knifeStack != 0)
+        for(int i = 0; i < _knives.Length; ++i)
         {
-            for (int i = 0; i < _knifeStack; ++i)
+            foreach (GameObject knife in _knives)
             {
-                EachKnifeStack _newKnives = _knives[i].GetComponent<EachKnifeStack>();
-                _newKnives.StackON = true;
+                Image _image = knife.GetComponent<Image>();
+                if (_image != null)
+                {
+                    _image.color = Color.black;
+                }
+                else
+                {
+                    Debug.LogWarning("I can't see it.");
+                }
             }
         }
     }
 
-    void DecreaseKnifeStack()
+    public void IncreaseStack()
     {
-        if (_knifeStack > 0)
+        if (_knifeStack < _knives.Length)
         {
-            EachKnifeStack _oldKnife = _knives[_knifeStack - 1].GetComponent<EachKnifeStack>();
-            _oldKnife.StackON = false;
-            _knifeStack--;
+            Image image = _knives[_knifeStack].GetComponent<Image>();
+            if (image != null)
+            {
+                image.color = Color.white;
+            }
+            _knifeStack++;
         }
     }
 
-    //public void SetKnifeColor(int value)
-    //{
-    //    Color newColor = new();
-
-    //    if(value < 0)
-    //    {
-    //        newColor = Color.black;
-    //    }
-    //    else
-    //    {
-    //        newColor = Color.white;
-    //    }
-
-    //    for(int i = 0; i < _knifeStack; ++i)
-    //    {
-    //        Image newimage = _knives[i].GetComponent<Image>();
-    //        newimage.color = newColor;
-    //    }
-    //}
+    public void DecreaseStack()
+    {
+        if (_knifeStack > 0)
+        {
+            _knifeStack--;
+            Image image = _knives[_knifeStack].GetComponent<Image>();
+            if (image != null)
+            {
+                image.color = Color.black;
+            }
+        }
+    }
 }

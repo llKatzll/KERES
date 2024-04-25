@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a77618464b34d640824a91706703e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stackON: 0
+  _stackOn: 0
 --- !u!1 &82427342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,8 +1240,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0057001114, y: -0.0027003288, z: 0}
-    m_Extent: {x: 15.5641, y: 12.065701, z: 0}
+    m_Center: {x: -0.0029997826, y: -0.00040006638, z: 0}
+    m_Extent: {x: 15.5648, y: 12.0627, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1826,7 +1826,7 @@ MonoBehaviour:
   - {fileID: 1994491039}
   - {fileID: 1519812886}
   - {fileID: 30705621}
-  _knifeStack: 3
+  _knifeStack: 0
 --- !u!1 &1383110120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a77618464b34d640824a91706703e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stackON: 0
+  _stackOn: 0
 --- !u!1 &1573865842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a77618464b34d640824a91706703e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stackON: 0
+  _stackOn: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
