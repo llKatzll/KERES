@@ -19,7 +19,10 @@ public class KeyStroke : MonoBehaviour
         animator = GetComponent<Animator>();
         moveSet = GetComponent<MoveSet>();
         _rigid = GetComponent<Rigidbody2D>();
+
         _keres = GetComponent<KeresStatus>();
+        _keres = FindObjectOfType<KeresStatus>();
+
         keyStroke.OnCommandInput.AddListener(OnCommandInput);
         //FindObjectOfType<KeyStrokeSystem>().OnCommandInput.AddListener(OnCommandInput);
     }
@@ -105,7 +108,7 @@ public class KeyStroke : MonoBehaviour
     void cmd_DAQ()
     {
         Debug.Log("DAQ!");
-        _keres._knifeStack++;
+        _keres.KnifeStack++;
     }
 
     void cmd_ASDQ()
@@ -141,6 +144,8 @@ public class KeyStroke : MonoBehaviour
     void cmd_SDQ()
     {
         Debug.Log("SDQ!");
+
+        _keres.KnifeStack--;
     }
 
     void cmd_SSDQ()

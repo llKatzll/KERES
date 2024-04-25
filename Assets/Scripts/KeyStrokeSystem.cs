@@ -72,8 +72,6 @@ public class KeyStrokeSystem : MonoBehaviour
 
     private StringBuilder sb = new StringBuilder();
 
-
-
     void Update()
     {
         // 플레이어 입력 받기
