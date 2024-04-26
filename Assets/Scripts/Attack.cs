@@ -16,4 +16,9 @@ public class Attack : MonoBehaviour
     {
         
     }
+
+    void ComboAttack()
+    {
+        
+    }
 }
