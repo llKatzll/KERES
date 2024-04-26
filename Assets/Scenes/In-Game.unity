@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 82427345}
   - component: {fileID: 82427344}
   - component: {fileID: 82427343}
+  - component: {fileID: 82427348}
   m_Layer: 8
   m_Name: Distant
   m_TagString: Enemy
@@ -392,6 +393,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &82427348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d5027ee5cc14948905dc093671bfa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &129923798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,8 +1253,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.0029997826, y: -0.00040006638, z: 0}
-    m_Extent: {x: 15.5648, y: 12.0627, z: 0}
+    m_Center: {x: -0.002600193, y: -0.0011997223, z: 0}
+    m_Extent: {x: 15.563, y: 12.0547, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1823,9 +1836,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knives:
-  - {fileID: 1994491039}
-  - {fileID: 1519812886}
-  - {fileID: 30705621}
+  - {fileID: 1994491043}
+  - {fileID: 1519812890}
+  - {fileID: 30705625}
   _knifeStack: 0
 --- !u!1 &1383110120
 GameObject:

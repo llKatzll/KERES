@@ -108,7 +108,7 @@ public class KeyStroke : MonoBehaviour
     void cmd_DAQ()
     {
         Debug.Log("DAQ!");
-        _keres.KnifeStack++;
+        _keres.IncreaseStack(1);
     }
 
     void cmd_ASDQ()
@@ -145,7 +145,7 @@ public class KeyStroke : MonoBehaviour
     {
         Debug.Log("SDQ!");
 
-        _keres.KnifeStack--;
+        _keres.DecreaseStack(1);
     }
 
     void cmd_SSDQ()

@@ -1,76 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class KeresStatus : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _knives = new GameObject[3];
+    [SerializeField] private EachKnifeStack[] _knives;
 
     public int _knifeStack = 0;
-
-    private void Awake()
-    {
-        ZeroStack();
-    }
-
-    private void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-
-    }
 
     public int KnifeStack
     {
         get { return _knifeStack; }
-        set { if (_knifeStack == 0) return; _knifeStack = value; }
+        set { _knifeStack = value; }
     }
 
-    void ZeroStack()
+    public void IncreaseStack(int amount)
     {
-        for(int i = 0; i < _knives.Length; ++i)
+        if (_knifeStack == 3)
+            return;
+
+
+        int cnt = 0;
+
+        // 범위기반 for문 범위 기반<< ? 
+        foreach (var k in _knives)
         {
-            foreach (GameObject knife in _knives)
+            if(!k.StackON)
             {
-                Image _image = knife.GetComponent<Image>();
-                if (_image != null)
-                {
-                    _image.color = Color.black;
-                }
-                else
-                {
-                    Debug.LogWarning("I can't see it.");
-                }
+                k.StackON = true;
+                cnt++;
+                _knifeStack++;
+
+                if (cnt == amount)
+                    return;
             }
         }
     }
 
-    public void IncreaseStack()
+    public void DecreaseStack(int amount)
     {
-        if (_knifeStack < _knives.Length)
-        {
-            Image image = _knives[_knifeStack].GetComponent<Image>();
-            if (image != null)
-            {
-                image.color = Color.white;
-            }
-            _knifeStack++;
-        }
-    }
+        if (_knifeStack == 0)
+            return;
 
-    public void DecreaseStack()
-    {
-        if (_knifeStack > 0)
+        int cnt = 0;
+        Debug.Log(amount);
+
+        for(int i = _knives.Length; i > 0; --i)
         {
-            _knifeStack--;
-            Image image = _knives[_knifeStack].GetComponent<Image>();
-            if (image != null)
+            var k = _knives[i - 1];
+
+            if (k.StackON)
             {
-                image.color = Color.black;
+                k.StackON = false;
+                cnt++;
+                _knifeStack--;
+
+                if (cnt == amount)
+                    return;
             }
         }
     }

@@ -11,6 +11,7 @@ public class MoveSet : MonoBehaviour
     //step 6.
     //step 7.
     private KeyStrokeSystem keyStroke;
+    private Attack attack;
 
     Rigidbody2D rigid;
     BoxCollider2D box;
@@ -84,7 +85,6 @@ public class MoveSet : MonoBehaviour
         }
     }
     #endregion
-
 
     #region มกวม
     public void Jumping()

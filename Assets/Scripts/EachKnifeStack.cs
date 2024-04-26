@@ -12,26 +12,23 @@ public class EachKnifeStack : MonoBehaviour
         _image.color = Color.black;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public bool StackON
     {
         get { return _stackOn; }
-        set { _stackOn = value; }
+        set { _stackOn = value; IsStackON(value);}
     }
-    //이런 젠장 !화가난다!
     void IsStackON(bool StackON)
     {
         if(StackON == true)
         {
             _image.color = Color.white;
+            Debug.Log("나이프 1 충전");
         }
-        else
+        else if(StackON == false)
         {
             _image.color = Color.black;
+            Debug.Log("나이프 1 소모");
         }
     }
+
 }
