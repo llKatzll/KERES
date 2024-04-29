@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Distant : MonoBehaviour
+public class StateContext : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
