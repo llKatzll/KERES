@@ -229,6 +229,12 @@ GameObject:
   - component: {fileID: 82427344}
   - component: {fileID: 82427343}
   - component: {fileID: 82427348}
+  - component: {fileID: 82427354}
+  - component: {fileID: 82427353}
+  - component: {fileID: 82427352}
+  - component: {fileID: 82427351}
+  - component: {fileID: 82427350}
+  - component: {fileID: 82427349}
   m_Layer: 8
   m_Name: Distant
   m_TagString: Enemy
@@ -408,6 +414,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d5027ee5cc14948905dc093671bfa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _idleState: {fileID: 82427353}
+  _chaseState: {fileID: 82427352}
+  _attackState: {fileID: 82427351}
+  _hittingState: {fileID: 82427350}
+  _deadState: {fileID: 82427349}
+--- !u!114 &82427349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41752543f553ad74bb2c2c3f621fcc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLocation: {fileID: 0}
+--- !u!114 &82427350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff53213389280149b946e0ad0060137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &82427351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb89cc9a27d6257459917c801b7e359b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &82427352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b55c740d16fc04a8cb623ed407af19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &82427353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3177591e2589145815769f46bf7d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &82427354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8ccbff31c7d8c43a55d80769d70fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+  _adaptAmount: 0
 --- !u!1 &129923798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,8 +1342,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.001349926, y: 0.0012001991, z: 0}
-    m_Extent: {x: 15.56765, y: 12.058001, z: 0}
+    m_Center: {x: 0.0011496544, y: -0.0058498383, z: 0}
+    m_Extent: {x: 15.56185, y: 12.05955, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

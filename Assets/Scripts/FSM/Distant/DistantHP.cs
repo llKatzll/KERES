@@ -13,7 +13,7 @@ public class DistantHP : MonoBehaviour
 
     private void Awake()
     {
-        
+        _distant = GetComponent<Distant>();
     }
 
     void Start()

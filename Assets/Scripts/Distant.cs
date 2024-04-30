@@ -12,6 +12,7 @@ public class Distant : MonoBehaviour
     [SerializeField] private AttackState _attackState;
     [SerializeField] private HittingState _hittingState;
     [SerializeField] private DeadState _deadState;
+    //>:C
 
     private EState _currentState;
 
@@ -31,7 +32,8 @@ public class Distant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _stateContext.CurrentState.UpdateState();
+        //늑대가되 ㅠㅠ
     }
 
     //상태를 업데이트 하는 함수에용

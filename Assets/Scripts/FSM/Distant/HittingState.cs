@@ -8,12 +8,12 @@ public class HittingState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 HittedStart");
     }
-    public void UpdateState()
-    {
-        Debug.Log("디스턴트 Hitted");
-    }
     public void ExitState()
     {
         Debug.Log("디스턴트 HittedEND");
+    }
+    public void UpdateState()
+    {
+        Debug.Log("디스턴트 Hitted");
     }
 }

@@ -6,14 +6,14 @@ public class ChaseState : MonoBehaviour, DistantState
 {
     public void EnterState()
     {
-        Debug.Log("디스턴트 Chase");
-    }
-    public void UpdateState()
-    {
-        Debug.Log("디스턴트 Chase");
+        Debug.Log("디스턴트 ChaseStart");
     }
     public void ExitState()
     {
         Debug.Log("디스턴트 ChaseEND");
+    }
+    public void UpdateState()
+    {
+        Debug.Log("디스턴트 Chase");
     }
 }
