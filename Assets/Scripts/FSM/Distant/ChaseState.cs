@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChaseState : MonoBehaviour, DistantState
 {
+    [SerializeField] private Transform _playerLocation;
     public void EnterState()
     {
         Debug.Log("디스턴트 ChaseStart");
@@ -14,6 +15,7 @@ public class ChaseState : MonoBehaviour, DistantState
     }
     public void UpdateState()
     {
-        Debug.Log("디스턴트 Chase");
+        Debug.Log("괴물이되");
+        transform.position = _playerLocation.position;
     }
 }

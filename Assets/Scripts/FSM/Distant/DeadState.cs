@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class DeadState : MonoBehaviour, DistantState
 {
-    [SerializeField] private Transform _playerLocation;
+    private Distant _distant;
+
     public void EnterState()
     {
         Debug.Log("디스턴트 DeadStart");
+        Debug.Log("나는..! 디스턴트다! 창백한 고래를 잡을!! 디스턴트다!!!");
+        StartCoroutine(Ambatublow());
     }
     public void ExitState()
     {
-        Debug.Log("디스턴트 DeadEND");
+        //nothing
     }
     public void UpdateState()
     {
-        Debug.Log("디스턴트 Dead, 존나 붙어다닐거야존나 붙어다닐거야존나 붙어다닐거야존나 붙어다닐거야존나 붙어다닐거야");
-        transform.position = _playerLocation.position;
+        //nothing
+    }
+
+    IEnumerator Ambatublow()
+    {
+        //TESTCODE
+        yield return new WaitForSeconds(2f);
+        Debug.Log("터질 것 같애");
+        Destroy(this.gameObject);
     }
 
 }
