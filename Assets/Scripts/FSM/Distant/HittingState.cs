@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HittingState : MonoBehaviour
+public class HittingState : MonoBehaviour, DistantState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void EnterState()
     {
-        
+        Debug.Log("디스턴트 HittedStart");
     }
-
-    // Update is called once per frame
-    void Update()
+    public void UpdateState()
     {
-        
+        Debug.Log("디스턴트 Hitted");
+    }
+    public void ExitState()
+    {
+        Debug.Log("디스턴트 HittedEND");
     }
 }

@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadState : MonoBehaviour
+public class DeadState : MonoBehaviour, DistantState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void EnterState()
     {
-        
+        Debug.Log("디스턴트 DeadStart");
     }
-
-    // Update is called once per frame
-    void Update()
+    public void UpdateState()
     {
-        
+        Debug.Log("디스턴트 Dead");
+    }
+    public void ExitState()
+    {
+        Debug.Log("디스턴트 DeadEND");
     }
 }

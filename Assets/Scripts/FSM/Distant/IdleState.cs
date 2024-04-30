@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ChaseState : MonoBehaviour, DistantState
+public class IdleState : MonoBehaviour, DistantState
 {
     public void EnterState()
     {
-        Debug.Log("디스턴트 Chase");
+        Debug.Log("디스턴트 Idle Start");
     }
     public void UpdateState()
     {
-        Debug.Log("디스턴트 Chase");
+        Debug.Log("디스턴트 Idle");
     }
     public void ExitState()
     {
-        Debug.Log("디스턴트 ChaseEND");
+        Debug.Log("디스턴트 IdleEND");
     }
 }
