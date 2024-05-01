@@ -59,4 +59,13 @@ public class Distant : MonoBehaviour
         }
         _currentState = state;
     }
+
+    public void CheckPlayerInRange(Transform _playerTransform, float _chaseRange)
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
+        if (distanceToPlayer <= _chaseRange)
+        {
+            UpdateState(EState.Chase); // 플레이어가 추적 범위 내에 있으면 ChaseState로 상태 변경
+        }
+    }
 }
