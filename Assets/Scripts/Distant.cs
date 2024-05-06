@@ -14,12 +14,23 @@ public class Distant : MonoBehaviour
     [SerializeField] private DeadState _deadState;
     //>:C
 
+    [Header("Enemy HitBox")]
+    [SerializeField] private BoxCollider2D _vision;
+    [SerializeField] private BoxCollider2D _hitBox;
+    [SerializeField] private BoxCollider2D _closedAttackRange;
+    [SerializeField] private BoxCollider2D _rangedAttackRange;
+
     private EState _currentState;
 
     private StateContext _stateContext;
 
     private void Awake()
     {
+        _vision = GetComponent<BoxCollider2D>();
+        _hitBox = GetComponent<BoxCollider2D>();
+        _closedAttackRange = GetComponent<BoxCollider2D>();
+        _rangedAttackRange = GetComponent<BoxCollider2D>();
+
         _stateContext = new StateContext();
         UpdateState(EState.Idle);
     }
@@ -60,12 +71,21 @@ public class Distant : MonoBehaviour
         _currentState = state;
     }
 
-    public void CheckPlayerInRange(Transform _playerTransform, float _chaseRange)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
-        if (distanceToPlayer <= _chaseRange)
+        // 만약 충돌한 콜라이더가 플레이어라면
+        if (other.CompareTag("Player"))
         {
-            UpdateState(EState.Chase); // 플레이어가 추적 범위 내에 있으면 ChaseState로 상태 변경
+            UpdateState(EState.Chase); // Chase 상태로 변경
         }
     }
+
+    //public void CheckPlayerInRange(Transform _playerTransform, float _chaseRange)
+    //{
+    //    float distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
+    //    if (distanceToPlayer <= _chaseRange)
+    //    {
+    //        UpdateState(EState.Chase); // 플레이어가 추적 범위 내에 있으면 ChaseState로 상태 변경
+    //    }
+    //}
 }
