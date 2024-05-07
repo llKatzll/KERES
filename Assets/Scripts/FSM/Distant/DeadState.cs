@@ -29,4 +29,9 @@ public class DeadState : MonoBehaviour, DistantState
         Destroy(this.gameObject);
     }
 
+    public void FixedUpdateState()
+    {
+
+    }
+
 }

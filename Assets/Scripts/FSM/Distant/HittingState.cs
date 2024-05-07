@@ -16,4 +16,9 @@ public class HittingState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 Hitted");
     }
+
+    public void FixedUpdateState()
+    {
+
+    }
 }

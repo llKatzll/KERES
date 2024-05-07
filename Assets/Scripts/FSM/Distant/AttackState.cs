@@ -16,4 +16,10 @@ public class AttackState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 Attack");
     }
+
+    public void FixedUpdateState()
+    {
+        
+    }
 }
+

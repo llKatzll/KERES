@@ -17,4 +17,8 @@ public class IdleState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 Idle");
     }
+    public void FixedUpdateState()
+    {
+
+    }
 }

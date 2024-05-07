@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using UnityEditor;
 using UnityEngine;
 
 public class Distant : MonoBehaviour
@@ -14,11 +15,17 @@ public class Distant : MonoBehaviour
     [SerializeField] private DeadState _deadState;
     //>:C
 
-    [Header("Enemy HitBox")]
-    [SerializeField] private BoxCollider2D _vision;
-    [SerializeField] private BoxCollider2D _hitBox;
-    [SerializeField] private BoxCollider2D _closedAttackRange;
-    [SerializeField] private BoxCollider2D _rangedAttackRange;
+    //[Header("Enemy HitBox")]
+    //[SerializeField] private BoxCollider2D _vision;
+    //[SerializeField] private BoxCollider2D _hitBox;
+    //[SerializeField] private BoxCollider2D _closedAttackRange;
+    //[SerializeField] private BoxCollider2D _rangedAttackRange;
+
+    [Header("CheckPlayer")]
+    [SerializeField] private bool _looked = false;
+    [SerializeField] private bool _closeAttack = false;
+    [SerializeField] private bool _rangedAttack = false;
+    [SerializeField] private LayerMask _whatIsPlayer;
 
     private EState _currentState;
 
@@ -26,10 +33,10 @@ public class Distant : MonoBehaviour
 
     private void Awake()
     {
-        _vision = GetComponent<BoxCollider2D>();
-        _hitBox = GetComponent<BoxCollider2D>();
-        _closedAttackRange = GetComponent<BoxCollider2D>();
-        _rangedAttackRange = GetComponent<BoxCollider2D>();
+        //_vision = GetComponent<BoxCollider2D>();
+        //_hitBox = GetComponent<BoxCollider2D>();
+        //_closedAttackRange = GetComponent<BoxCollider2D>();
+        //_rangedAttackRange = GetComponent<BoxCollider2D>();
 
         _stateContext = new StateContext();
         UpdateState(EState.Idle);
@@ -44,7 +51,12 @@ public class Distant : MonoBehaviour
     void Update()
     {
         _stateContext.CurrentState.UpdateState();
-        //늑대가되 ㅠㅠ
+    }
+
+    void FixedUpdate()
+    {
+        _stateContext.CurrentState.FixedUpdateState();
+        Vision();
     }
 
     //상태를 업데이트 하는 함수에용
@@ -71,14 +83,40 @@ public class Distant : MonoBehaviour
         _currentState = state;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] private float _visionX;
+    [SerializeField] private float _visionY;
+
+    private void Vision()
     {
-        // 만약 충돌한 콜라이더가 플레이어라면
-        if (other.CompareTag("Player"))
+        bool hit = Physics2D.BoxCast(transform.position, new Vector2(_visionX, _visionY), 0f, Vector2.zero, 0, _whatIsPlayer);
+
+        if (hit && _looked == false)
         {
-            UpdateState(EState.Chase); // Chase 상태로 변경
+            UpdateState(EState.Chase);
+            _looked = true;
+        }
+        else if (!hit && _looked == true)
+        {
+            UpdateState(EState.Idle);
+            _looked = false;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+
+    }
+
+
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Player") /*&& other == _vision*/)
+    //    {
+    //        Debug.Log("닿았음!");
+    //        UpdateState(EState.Chase); // Chase 상태로 변경
+    //    }
+    //}
 
     //public void CheckPlayerInRange(Transform _playerTransform, float _chaseRange)
     //{

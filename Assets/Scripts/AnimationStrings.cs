@@ -8,4 +8,6 @@ public class AnimationStrings : MonoBehaviour
     public static string Jump = "Jump";
     public static string IsGrounded = "isGrounded";
     public static string Dash = "Dash";
+
+    public static string Attack = "Attack";
 }

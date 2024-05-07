@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - LocaterUI
   - Enemy
+  - VisionHitBox
+  - AttackHitBox
+  - RangedAttackHitBox
   layers:
   - Default
   - TransparentFX
