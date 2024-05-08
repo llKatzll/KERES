@@ -20,6 +20,8 @@ public class AttackState : MonoBehaviour, DistantState
     public void UpdateState()
     {
         Debug.Log("디스턴트 Attack");
+
+        _anim.SetBool(AnimationStrings.Attack, true);
     }
 
     public void FixedUpdateState()
