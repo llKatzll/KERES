@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class AttackState : MonoBehaviour, DistantState
 {
+
+    Animator _anim;
+
+
     public void EnterState()
     {
         Debug.Log("디스턴트 AttackStart");
+        _anim = GetComponent<Animator>();
     }
     public void ExitState()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,10 +23,16 @@ public class Distant : MonoBehaviour
     //[SerializeField] private BoxCollider2D _rangedAttackRange;
 
     [Header("CheckPlayer")]
-    [SerializeField] private bool _looked = false;
     [SerializeField] private bool _closeAttack = false;
     [SerializeField] private bool _rangedAttack = false;
+    [SerializeField] private float _lookVisionX;
+    [SerializeField] private float _lookVisionY;
     [SerializeField] private LayerMask _whatIsPlayer;
+
+    [Header("CheckPlayer : Attack")]
+    [SerializeField] private bool _attackReady = false;
+    [SerializeField] private float _attackVisionX;
+    [SerializeField] private float _attackVisionY;
 
     private EState _currentState;
 
@@ -82,31 +89,56 @@ public class Distant : MonoBehaviour
         }
         _currentState = state;
     }
-
-    [SerializeField] private float _visionX;
-    [SerializeField] private float _visionY;
+    
+    
 
     private void Vision()
     {
-        bool hit = Physics2D.BoxCast(transform.position, new Vector2(_visionX, _visionY), 0f, Vector2.zero, 0, _whatIsPlayer);
+        bool _lookHit = Physics2D.BoxCast(transform.position, new Vector2(_lookVisionX, _lookVisionY), 0f, Vector2.zero, 0, _whatIsPlayer);
+        bool _attackLookHit = Physics2D.BoxCast(transform.position, new Vector2(_attackVisionX, _attackVisionY), 0f, Vector2.zero, 0, _whatIsPlayer);
 
-        if (hit && _looked == false)
+        if (_attackLookHit)
+        {
+            UpdateState(EState.Attack);
+        }
+        else if (_lookHit)
         {
             UpdateState(EState.Chase);
-            _looked = true;
         }
-        else if (!hit && _looked == true)
+        else
         {
             UpdateState(EState.Idle);
-            _looked = false;
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
+        //1
+        Gizmos.color = UnityEngine.Color.red;
+        DrawBox(transform.position, new Vector2(_lookVisionX, _lookVisionY));
+        //2
+        Gizmos.color = UnityEngine.Color.blue;
+        DrawBox(transform.position, new Vector2(_attackVisionX, _attackVisionY));
+    } 
 
+    // Draw a box using lines
+    void DrawBox(Vector3 center, Vector2 size)
+    {
+        // Calculate half size to draw from center
+        Vector2 halfSize = size / 2f;
+
+        // Get box corners
+        Vector3 topLeft = center + new Vector3(-halfSize.x, halfSize.y);
+        Vector3 topRight = center + new Vector3(halfSize.x, halfSize.y);
+        Vector3 bottomRight = center + new Vector3(halfSize.x, -halfSize.y);
+        Vector3 bottomLeft = center + new Vector3(-halfSize.x, -halfSize.y);
+
+        // Draw lines
+        Gizmos.DrawLine(topLeft, topRight);
+        Gizmos.DrawLine(topRight, bottomRight);
+        Gizmos.DrawLine(bottomRight, bottomLeft);
+        Gizmos.DrawLine(bottomLeft, topLeft);
     }
-
 
 
     //private void OnTriggerEnter2D(Collider2D other)

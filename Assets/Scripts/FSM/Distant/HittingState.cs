@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class HittingState : MonoBehaviour, DistantState
 {
+
+    Animator _anim;
+
+
     public void EnterState()
     {
         Debug.Log("디스턴트 HittedStart");
+        _anim = GetComponent<Animator>();
     }
     public void ExitState()
     {

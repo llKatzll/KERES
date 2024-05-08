@@ -33,7 +33,7 @@ public class ChaseState : MonoBehaviour, DistantState
             // 적의 현재 위치를 플레이어 방향으로 조금씩 이동
             transform.Translate(direction * _moveSpeed * Time.deltaTime);
 
-            //_anim.SetBool(AnimationStrings.IsMove, true);
+            _anim.SetBool(AnimationStrings.IsMove, true);
 
             // 적이 플레이어를 바라보도록 방향을 설정
             if (direction.x > 0)
