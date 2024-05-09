@@ -23,6 +23,13 @@ public class Attack : MonoBehaviour
     [Header("Time")]
     [SerializeField] private float _waitTime = 0.3f; // 공격 대기 시간
 
+    private void Awake()
+    {
+        _anim = GetComponent<Animator>();
+        _distant = GetComponent<Distant>();
+        _stateContext = new StateContext();
+    }
+
     void Start()
     {
 
