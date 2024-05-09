@@ -44,12 +44,13 @@ public class Attack : MonoBehaviour
             {
                 StartAttackCoroutine();
             }
-            else
-            {
-                // 이미 공격 중이면 Coroutine을 중지하고 재시작합니다.
-                StopAttackCoroutine();
-                StartAttackCoroutine();
-            }
+            StopAttackCoroutine();
+            //else
+            //{
+            // 이미 공격 중이면 Coroutine을 중지하고 재시작합니다.
+
+            //    StartAttackCoroutine();
+            //}
         }
     }
 
@@ -72,6 +73,7 @@ public class Attack : MonoBehaviour
     IEnumerator AttackRoutine()
     {
         _anim.SetTrigger("AttackA"); // A 애니메이션 트리거 설정
+        Debug.Log("1번째 공격");
 
         // 클릭 간격을 기다립니다.
         yield return new WaitForSeconds(_waitTime);
@@ -80,6 +82,7 @@ public class Attack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _anim.SetTrigger("AttackB"); // B 애니메이션 트리거 설정
+            Debug.Log("2번째 공격");
 
             // 클릭 간격을 기다립니다.
             yield return new WaitForSeconds(_waitTime);
@@ -88,6 +91,7 @@ public class Attack : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _anim.SetTrigger("AttackC"); // C 애니메이션 트리거 설정
+                Debug.Log("3번째 공격");
             }
         }
 
