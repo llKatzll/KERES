@@ -58,12 +58,12 @@ public class Distant : MonoBehaviour
     void Update()
     {
         _stateContext.CurrentState.UpdateState();
+        Vision();
     }
 
     void FixedUpdate()
     {
         _stateContext.CurrentState.FixedUpdateState();
-        Vision();
     }
 
     //상태를 업데이트 하는 함수에용

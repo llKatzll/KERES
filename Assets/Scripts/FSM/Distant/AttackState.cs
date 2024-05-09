@@ -7,6 +7,7 @@ public class AttackState : MonoBehaviour, DistantState
 
     Animator _anim;
 
+    //private bool _isAttack = false;
 
     public void EnterState()
     {
@@ -17,11 +18,16 @@ public class AttackState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 AttackEND");
     }
+
     public void UpdateState()
     {
         Debug.Log("디스턴트 Attack");
 
-        _anim.SetBool(AnimationStrings.Attack, true);
+        //if(!_isAttack)
+        //{
+            _anim.SetTrigger(AnimationStrings.Attack);
+        //    _isAttack = true;
+        //}
     }
 
     public void FixedUpdateState()
