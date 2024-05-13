@@ -23,11 +23,7 @@ public class AttackState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 Attack");
 
-        //if(!_isAttack)
-        //{
-            _anim.SetTrigger(AnimationStrings.Attack);
-        //    _isAttack = true;
-        //}
+        _anim.SetTrigger(AnimationStrings.Attack); //TODO : 아이너뮬레이터로 2초마다 되게끔? || Time.deltatime으로 일정주기마다 호출이 되게끔, rifle의 발사 함수를 참고
     }
 
     public void FixedUpdateState()
