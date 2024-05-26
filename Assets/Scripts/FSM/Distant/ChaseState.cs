@@ -20,7 +20,7 @@ public class ChaseState : MonoBehaviour, DistantState
     }
     public void UpdateState()
     {
-        
+        //
     }
     public void FixedUpdateState()
     {
