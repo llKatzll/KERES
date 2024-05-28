@@ -6,13 +6,6 @@ public class Attack : MonoBehaviour
 {
     Animator _anim;
 
-    Distant _distant;
-
-    EState _currentState;
-
-    private StateContext _stateContext;
-
-    private Coroutine attackCoroutine;
 
     [SerializeField] private bool _isAttacking = false; // 현재 공격 중인지 여부
     private bool _isIdle = true; // 대기 상태 여부
@@ -26,8 +19,6 @@ public class Attack : MonoBehaviour
     private void Awake()
     {
         _anim = GetComponent<Animator>();
-        _distant = GetComponent<Distant>();
-        _stateContext = new StateContext();
     }
 
     void Start()
@@ -43,4 +34,7 @@ public class Attack : MonoBehaviour
             _anim.SetTrigger(AnimationStrings.Attack);
         }
     }
+
+    
+
 }

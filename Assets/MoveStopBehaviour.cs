@@ -4,46 +4,23 @@ using UnityEngine;
 
 public class MoveStopBehaviour : StateMachineBehaviour
 {
-    Ghost ghost;
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         MoveSet moveSet = animator.GetComponent<MoveSet>();
-        ghost = animator.gameObject.GetComponent<Ghost>();
 
-        if (moveSet != null)
-        {
-            moveSet.SetSkillUsing(true); // 애니메이션이 실행 중임을 MoveSet에 알림
-        }
-
-        if (ghost != null)
-        {
-            ghost.makeGhost = true;
-        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        MoveSet moveSet = animator.GetComponent<MoveSet>();
-        ghost = animator.gameObject.GetComponent<Ghost>();
 
-        if (moveSet != null)
-        {
-            moveSet.SetSkillUsing(false); // 애니메이션이 종료되었음을 MoveSet에 알림
-        }
-
-        if (ghost != null)
-        {
-            ghost.makeGhost = false;
-        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
