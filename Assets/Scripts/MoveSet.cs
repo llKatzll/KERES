@@ -44,6 +44,8 @@ public class MoveSet : MonoBehaviour
     [SerializeField] private bool _isFacingLeft = true;
     //skill 사용여부
     [SerializeField] private bool _isSkillUsing = false;
+    //평타 시전여부
+    [SerializeField] private bool _isNormalAttacking = false;
 
     private void Awake()
     {
@@ -105,7 +107,7 @@ public class MoveSet : MonoBehaviour
     {
         GameObject _mouseLocater = GameObject.Find("MousePositionHelper");
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) && isDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isDash)
         {
             Debug.Log("대쉬 쿨다운. 남은 잔여시간 : " + _dashCoolDown);
         }
@@ -157,7 +159,7 @@ public class MoveSet : MonoBehaviour
         yield return new WaitForSeconds(_dashDuration);
         ghost.makeGhost = false;
         rigid.velocity = new Vector2(rigid.velocity.x / _dashBrakeAmountX, rigid.velocity.y / _dashBrakeAmountY);
-        
+
     }
 
     private IEnumerator DashCoolDown()
@@ -192,9 +194,14 @@ public class MoveSet : MonoBehaviour
         _isSkillUsing = value;
     }
 
+    public void SetNormalAttackUsing(bool value)
+    {
+        _isNormalAttacking = value;
+    }
+
     private void FixedUpdate()
     {
-        if (!_isSkillUsing)
+        if (!_isSkillUsing && !_isNormalAttacking)
         {
             Moving();
         }
@@ -202,7 +209,7 @@ public class MoveSet : MonoBehaviour
 
     private void Update()
     {
-        if (!_isSkillUsing)
+        if (!_isSkillUsing && !_isNormalAttacking)
         {
             Dashing();
             Jumping();

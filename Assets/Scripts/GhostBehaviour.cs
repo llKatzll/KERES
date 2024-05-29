@@ -5,11 +5,12 @@ using UnityEngine;
 public class GhostBehaviour : StateMachineBehaviour
 {
     Ghost ghost;
+    MoveSet moveSet;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        MoveSet moveSet = animator.GetComponent<MoveSet>();
+        moveSet = animator.GetComponent<MoveSet>();
         ghost = animator.gameObject.GetComponent<Ghost>();
 
         if (moveSet != null)
@@ -32,9 +33,6 @@ public class GhostBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        MoveSet moveSet = animator.GetComponent<MoveSet>();
-        ghost = animator.gameObject.GetComponent<Ghost>();
-
         if (moveSet != null)
         {
             moveSet.SetSkillUsing(false); // 애니메이션이 종료되었음을 MoveSet에 알림
