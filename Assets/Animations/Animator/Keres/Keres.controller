@@ -420,8 +420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb31ef83af850e24b8dc9158c5a0691c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveForce: 0.1
   _moveDuration: 1
+  _elapsedTime: 0
+  _moveForce: 0.1
 --- !u!1101 &-1669140604814697078
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -459,8 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb31ef83af850e24b8dc9158c5a0691c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveForce: 1
   _moveDuration: 1
+  _elapsedTime: 0
+  _moveForce: 0.5
 --- !u!1107 &-463341842291641946
 AnimatorStateMachine:
   serializedVersion: 6

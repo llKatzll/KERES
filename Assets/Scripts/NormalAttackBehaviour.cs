@@ -7,10 +7,12 @@ public class NormalAttackBehaviour : StateMachineBehaviour
 {
     MoveSet moveSet;
 
-    [SerializeField] private float _moveForce;
-    private Vector3 _targetPosition;
     [SerializeField] private float _moveDuration = 0.1f; // 이동하는 데 걸리는 시간 (초)
-    private float _elapsedTime;
+
+    private Vector3 _targetPosition;
+    
+    public float _elapsedTime; 
+    public float _moveForce;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -12,6 +12,8 @@ public class IdleState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 Idle Start");
         _anim = GetComponent<Animator>();
+
+        _anim.SetBool(AnimationStrings.IsMove, false);
     }
     public void ExitState()
     {
@@ -20,8 +22,6 @@ public class IdleState : MonoBehaviour, DistantState
     public void UpdateState()
     {
         Debug.Log("디스턴트 Idle");
-
-        _anim.SetBool(AnimationStrings.IsMove,false);
     }
     public void FixedUpdateState()
     {
