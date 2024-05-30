@@ -16,8 +16,7 @@ public class Damageable : MonoBehaviour
             var enemy = collision.GetComponent<Distant>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
-                enemy.ApplyKnockback(transform.position, knockbackPower);
+                enemy.UpdateState(EState.Hitted);
             }
         }
     }

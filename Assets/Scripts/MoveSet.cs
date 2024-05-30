@@ -209,10 +209,13 @@ public class MoveSet : MonoBehaviour
 
     private void Update()
     {
-        if (!_isSkillUsing && !_isNormalAttacking)
+        if (!_isNormalAttacking)
+        {
+            Jumping();
+        }
+        if (!_isSkillUsing)
         {
             Dashing();
-            Jumping();
         }
         Flip();
     }

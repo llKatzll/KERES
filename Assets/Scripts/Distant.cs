@@ -35,7 +35,7 @@ public class Distant : MonoBehaviour
     [SerializeField] private float _attackVisionY;
 
     [Header("HP")]
-    [SerializeField] private float health = 100f;
+    public float health = 100f;
 
     private EState _currentState;
 
@@ -136,27 +136,6 @@ public class Distant : MonoBehaviour
         Gizmos.DrawLine(topRight, bottomRight);
         Gizmos.DrawLine(bottomRight, bottomLeft);
         Gizmos.DrawLine(bottomLeft, topLeft);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void ApplyKnockback(Vector2 hitPosition, float knockbackPower)
-    {
-        Vector2 knockbackDirection = (transform.position - (Vector3)hitPosition).normalized;
-        GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackPower, ForceMode2D.Impulse);
-    }
-
-    private void Die()
-    {
-        // 적이 죽었을 때의 로직
-        Destroy(gameObject);
     }
 
 }

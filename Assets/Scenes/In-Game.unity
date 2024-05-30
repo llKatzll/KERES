@@ -982,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9748017c7c9c34fa19fe3148a06b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  knockbackPower: 5
+  damage: 15
+  knockbackPower: 10
 --- !u!1 &234782790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  knockbackPower: 5
+  knockbackPower: 1
 --- !u!1 &449939122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,8 +1555,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.0044498444, y: 0.0000500679, z: 0}
-    m_Extent: {x: 15.56415, y: 12.06365, z: 0}
+    m_Center: {x: 0.004750252, y: 0.0011997223, z: 0}
+    m_Extent: {x: 15.56215, y: 12.0667, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2418,8 +2418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9748017c7c9c34fa19fe3148a06b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  knockbackPower: 5
+  damage: 12
+  knockbackPower: 0
 --- !u!1 &1519812886
 GameObject:
   m_ObjectHideFlags: 0
