@@ -15,13 +15,7 @@ public class NormalAttackBehaviour : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        moveSet = animator.GetComponent<MoveSet>();
-
-        if (moveSet != null)
-        {
-            moveSet.SetNormalAttackUsing(true); // 공격이 실행 중임을 MoveSet에 알림
-            StartMoving(animator);
-        }
+        StartMoving(animator);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -52,6 +46,8 @@ public class NormalAttackBehaviour : StateMachineBehaviour
         float t = _elapsedTime / _moveDuration;
         animator.transform.position = Vector3.Lerp(animator.transform.position, _targetPosition, t);
     }
+
+    
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

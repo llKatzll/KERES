@@ -429,6 +429,7 @@ MonoBehaviour:
   _attackReady: 0
   _attackVisionX: 2
   _attackVisionY: 1
+  health: 100
 --- !u!114 &82427349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,6 +727,7 @@ MonoBehaviour:
   _dashCoolDown: 0.8
   _isFacingLeft: 1
   _isSkillUsing: 0
+  _isNormalAttacking: 0
 --- !u!95 &129923806
 Animator:
   serializedVersion: 5
@@ -900,6 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 199987906}
   - component: {fileID: 199987907}
+  - component: {fileID: 199987908}
   m_Layer: 7
   m_Name: HitBox3
   m_TagString: Untagged
@@ -967,6 +970,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.559334, y: 0.39516503}
   m_EdgeRadius: 0
+--- !u!114 &199987908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199987905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9748017c7c9c34fa19fe3148a06b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  knockbackPower: 5
 --- !u!1 &234782790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358112499}
   - component: {fileID: 358112500}
+  - component: {fileID: 358112501}
   m_Layer: 7
   m_Name: HitBox1
   m_TagString: Untagged
@@ -1169,6 +1187,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36924303, y: 0.35196245}
   m_EdgeRadius: 0
+--- !u!114 &358112501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358112498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9748017c7c9c34fa19fe3148a06b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  knockbackPower: 5
 --- !u!1 &449939122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,8 +1555,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0062499046, y: 0.001250267, z: 0}
-    m_Extent: {x: 15.55975, y: 12.06625, z: 0}
+    m_Center: {x: -0.0044498444, y: 0.0000500679, z: 0}
+    m_Extent: {x: 15.56415, y: 12.06365, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2306,6 +2338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468864219}
   - component: {fileID: 1468864220}
+  - component: {fileID: 1468864221}
   m_Layer: 7
   m_Name: HitBox2
   m_TagString: Untagged
@@ -2373,6 +2406,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35628223, y: 0.6154977}
   m_EdgeRadius: 0
+--- !u!114 &1468864221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468864218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9748017c7c9c34fa19fe3148a06b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  knockbackPower: 5
 --- !u!1 &1519812886
 GameObject:
   m_ObjectHideFlags: 0
