@@ -465,6 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb89cc9a27d6257459917c801b7e359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAttack: 0
+  _isAttackingCoroutineRunning: 0
+  _attackInterval: 3
 --- !u!114 &82427352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,8 +1543,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0013999939, y: -0.0018501282, z: 0}
-    m_Extent: {x: 15.5596, y: 12.06775, z: 0}
+    m_Center: {x: -0.00069999695, y: -0.0018501282, z: 0}
+    m_Extent: {x: 15.5676, y: 12.06475, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

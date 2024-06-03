@@ -36,4 +36,5 @@ public class Damageable : MonoBehaviour
             Debug.LogWarning("No Rigidbody2D found on the enemy object.");
         }
     }
+    ////TODO : 맞았을 때 해당 공격이 피니쉬 태그라면 넉다운 애니, 아니라면 경직 애니, 그라운드 어택이면 그라운드 경직, 공중 어택이면 공중 경직, 일정 넉백 수치 이상이 될 경우 넉다운 애니.
 }
