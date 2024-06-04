@@ -99,7 +99,7 @@ public class Distant : MonoBehaviour
         {
             UpdateState(EState.Attack);
         }
-        else if (_lookHit)
+        else if (_lookHit && !_attackState._isAttackingCoroutineRunning)
         {
             UpdateState(EState.Chase);
         }

@@ -8,11 +8,20 @@ public class ChaseState : MonoBehaviour, DistantState
     [SerializeField] private float _moveSpeed;
 
     Animator _anim;
+    AttackState _attackState;
 
     public void EnterState()
     {
         Debug.Log("디스턴트 ChaseStart");
         _anim = GetComponent<Animator>();
+        _attackState = GetComponent<AttackState>();
+
+        if (_attackState._isAttackingCoroutineRunning)
+        {
+            // 현재 공격 중이라면 ChaseState로 진입하지 않음
+            Debug.Log("공격 중에는 ChaseState로 진입할 수 없습니다.");
+            return;
+        }
     }
     public void ExitState()
     {
@@ -25,7 +34,8 @@ public class ChaseState : MonoBehaviour, DistantState
     public void FixedUpdateState()
     {
         Debug.Log("괴물이되");
-        if (_target != null)
+
+        if (_target != null)    
         {
             // 적이 플레이어를 향해 이동하도록 방향 벡터를 계산
             Vector2 direction = (_target.position - transform.position).normalized;

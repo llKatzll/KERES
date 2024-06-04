@@ -7,8 +7,8 @@ public class AttackState : MonoBehaviour, DistantState
     Distant _distant;
 
     [Header("Distant Attack Boolean")]
-    [SerializeField] private bool _isAttack = false;
-    [SerializeField] private bool _isAttackingCoroutineRunning = false; // 코루틴 실행 여부를 확인하는 플래그
+    public bool _isAttack = false;
+    public bool _isAttackingCoroutineRunning = false; // 코루틴 실행 여부를 확인하는 플래그
 
     [Header("Distant Attack figure")]
     [SerializeField] private float _attackInterval;
