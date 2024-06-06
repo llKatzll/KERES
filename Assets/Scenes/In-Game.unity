@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isAttack: 0
   _isAttackingCoroutineRunning: 0
-  _attackInterval: 3
+  _attackInterval: 1.7
 --- !u!114 &82427352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,8 +1543,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.00069999695, y: -0.0018501282, z: 0}
-    m_Extent: {x: 15.5676, y: 12.06475, z: 0}
+    m_Center: {x: -0.0025501251, y: 0.0042500496, z: 0}
+    m_Extent: {x: 15.56405, y: 12.06535, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

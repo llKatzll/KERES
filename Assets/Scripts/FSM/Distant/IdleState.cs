@@ -7,12 +7,13 @@ using UnityEngine;
 public class IdleState : MonoBehaviour, DistantState
 {
     Animator _anim;
+    Distant _distant;
 
     public void EnterState()
     {
         Debug.Log("디스턴트 Idle Start");
         _anim = GetComponent<Animator>();
-
+        _distant = GetComponent<Distant>();
         _anim.SetBool(AnimationStrings.IsMove, false);
     }
     public void ExitState()

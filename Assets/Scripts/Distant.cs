@@ -7,20 +7,12 @@ using UnityEngine;
 
 public class Distant : MonoBehaviour
 {
-
     [Header("Enemy States")]
     [SerializeField] private IdleState _idleState;
     [SerializeField] private ChaseState _chaseState;
     [SerializeField] private AttackState _attackState;
     [SerializeField] private HittingState _hittingState;
     [SerializeField] private DeadState _deadState;
-    //>:C
-
-    //[Header("Enemy HitBox")]
-    //[SerializeField] private BoxCollider2D _vision;
-    //[SerializeField] private BoxCollider2D _hitBox;
-    //[SerializeField] private BoxCollider2D _closedAttackRange;
-    //[SerializeField] private BoxCollider2D _rangedAttackRange;
 
     [Header("CheckPlayer")]
     [SerializeField] private bool _closeAttack = false;
@@ -34,12 +26,16 @@ public class Distant : MonoBehaviour
     [SerializeField] private float _attackVisionX;
     [SerializeField] private float _attackVisionY;
 
+    [Header("Vision?")]
+    [SerializeField] private bool _visionChecked = false;
+
     [Header("HP")]
     public float health = 100f;
 
     private EState _currentState;
-
     private StateContext _stateContext;
+
+    
 
     private void Awake()
     {
@@ -52,11 +48,13 @@ public class Distant : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         _stateContext.CurrentState.UpdateState();
-        Vision();
+        if (!_visionChecked)
+        {
+            Vision();
+        }
     }
 
     void FixedUpdate()
@@ -64,7 +62,6 @@ public class Distant : MonoBehaviour
         _stateContext.CurrentState.FixedUpdateState();
     }
 
-    //상태를 업데이트 하는 함수에용
     public void UpdateState(EState state)
     {
         switch (state)
@@ -86,9 +83,8 @@ public class Distant : MonoBehaviour
                 break;
         }
         _currentState = state;
+        _visionChecked = false; // 상태가 변경될 때마다 Vision 함수가 다시 실행되도록 플래그 리셋
     }
-    
-    
 
     private void Vision()
     {
@@ -101,41 +97,38 @@ public class Distant : MonoBehaviour
         }
         else if (_lookHit && !_attackState._isAttackingCoroutineRunning)
         {
+            _lookVisionX = _lookVisionX * 2.5f;
+            _lookVisionY = _lookVisionY * 2.5f;
             UpdateState(EState.Chase);
         }
         else
         {
             UpdateState(EState.Idle);
         }
+
+        _visionChecked = true; // Vision 함수가 한 번만 실행되도록 설정
     }
 
     void OnDrawGizmos()
     {
-        //1
         Gizmos.color = UnityEngine.Color.red;
         DrawBox(transform.position, new Vector2(_lookVisionX, _lookVisionY));
-        //2
         Gizmos.color = UnityEngine.Color.blue;
         DrawBox(transform.position, new Vector2(_attackVisionX, _attackVisionY));
-    } 
+    }
 
-    // Draw a box using lines
     void DrawBox(Vector3 center, Vector2 size)
     {
-        // Calculate half size to draw from center
         Vector2 halfSize = size / 2f;
 
-        // Get box corners
         Vector3 topLeft = center + new Vector3(-halfSize.x, halfSize.y);
         Vector3 topRight = center + new Vector3(halfSize.x, halfSize.y);
         Vector3 bottomRight = center + new Vector3(halfSize.x, -halfSize.y);
         Vector3 bottomLeft = center + new Vector3(-halfSize.x, -halfSize.y);
 
-        // Draw lines
         Gizmos.DrawLine(topLeft, topRight);
         Gizmos.DrawLine(topRight, bottomRight);
         Gizmos.DrawLine(bottomRight, bottomLeft);
         Gizmos.DrawLine(bottomLeft, topLeft);
     }
-
 }

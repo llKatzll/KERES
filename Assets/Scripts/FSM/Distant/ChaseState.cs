@@ -9,13 +9,14 @@ public class ChaseState : MonoBehaviour, DistantState
 
     Animator _anim;
     AttackState _attackState;
+    Distant _distant;
 
     public void EnterState()
     {
         Debug.Log("디스턴트 ChaseStart");
         _anim = GetComponent<Animator>();
         _attackState = GetComponent<AttackState>();
-
+        _distant = GetComponent<Distant>();
         if (_attackState._isAttackingCoroutineRunning)
         {
             // 현재 공격 중이라면 ChaseState로 진입하지 않음

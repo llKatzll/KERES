@@ -5,9 +5,9 @@ public class AttackState : MonoBehaviour, DistantState
 {
     Animator _anim;
     Distant _distant;
-
-    [Header("Distant Attack Boolean")]
     public bool _isAttack = false;
+    [Header("Distant Attack Boolean")]
+    
     public bool _isAttackingCoroutineRunning = false; // 코루틴 실행 여부를 확인하는 플래그
 
     [Header("Distant Attack figure")]
@@ -17,6 +17,7 @@ public class AttackState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 AttackStart");
         _anim = GetComponent<Animator>();
+        _distant = GetComponent<Distant>();
         _anim.SetBool(AnimationStrings.IsMove, false); //이동 스테이트의 애니메이션 false
         _isAttack = true;
         if (!_isAttackingCoroutineRunning)
@@ -29,6 +30,7 @@ public class AttackState : MonoBehaviour, DistantState
     {
         Debug.Log("디스턴트 AttackEND");
         _isAttack = false;
+        
     }
 
     public void UpdateState()
