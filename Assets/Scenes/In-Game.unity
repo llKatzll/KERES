@@ -420,14 +420,7 @@ MonoBehaviour:
   _deadState: {fileID: 82427349}
   _closeAttack: 0
   _rangedAttack: 0
-  _lookVisionX: 12.5
-  _lookVisionY: 7
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _attackReady: 0
-  _attackVisionX: 2
-  _attackVisionY: 1
+  _visionChecked: 0
   health: 100
 --- !u!114 &82427349
 MonoBehaviour:
@@ -482,6 +475,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 129923802}
   _moveSpeed: 7.5
+  _attackReady: 0
+  _attackVisionX: 3
+  _attackVisionY: 1
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &82427353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +493,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3177591e2589145815769f46bf7d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lookVisionX: 16
+  _lookVisionY: 6
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &129923798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,8 +1547,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.0025501251, y: 0.0042500496, z: 0}
-    m_Extent: {x: 15.56405, y: 12.06535, z: 0}
+    m_Center: {x: 0.0048003197, y: 0.005449772, z: 0}
+    m_Extent: {x: 15.562799, y: 12.06175, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

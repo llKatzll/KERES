@@ -11,7 +11,7 @@ public class NormalAttackBehaviour : StateMachineBehaviour
 
     private Vector3 _targetPosition;
     
-    public float _elapsedTime; 
+    [SerializeField] private float _elapsedTime; 
     public float _moveForce;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

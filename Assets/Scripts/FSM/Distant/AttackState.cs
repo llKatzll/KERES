@@ -19,7 +19,6 @@ public class AttackState : MonoBehaviour, DistantState
         _anim = GetComponent<Animator>();
         _distant = GetComponent<Distant>();
         _anim.SetBool(AnimationStrings.IsMove, false); //이동 스테이트의 애니메이션 false
-        _isAttack = true;
         if (!_isAttackingCoroutineRunning)
         {
             StartCoroutine(RepeatAttack());
