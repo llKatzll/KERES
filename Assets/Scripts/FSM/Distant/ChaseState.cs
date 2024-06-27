@@ -12,12 +12,6 @@ public class ChaseState : MonoBehaviour, DistantState
     [SerializeField] private Transform _target;
     [SerializeField] private float _moveSpeed;
 
-    [Header("CheckPlayer : Attack")]
-    [SerializeField] private bool _attackReady = false;
-    [SerializeField] private float _attackVisionX;
-    [SerializeField] private float _attackVisionY;
-    [SerializeField] private LayerMask _whatIsPlayer;
-
     Animator _anim;
     AttackState _attackState;
     Distant _distant;
@@ -41,7 +35,7 @@ public class ChaseState : MonoBehaviour, DistantState
     }
     public void UpdateState()
     {
-        AttackVision();
+        
     }
     public void FixedUpdateState()
     {
@@ -69,41 +63,5 @@ public class ChaseState : MonoBehaviour, DistantState
                 transform.localScale = new Vector2(2.7f, 2.7f); // 적을 좌우 반전하지 않고 왼쪽을 바라보게 함
             }
         }
-    }
-
-    void AttackVision()
-    {
-        bool _attackLookHit = Physics2D.BoxCast(transform.position, new Vector2(_attackVisionX, _attackVisionY), 0f, Vector2.zero, 0, _whatIsPlayer);
-        //추격 도중 공격 범위 진입 시 공격함
-        if (_attackLookHit && _attackState._isAttack == false)
-        {
-            _attackState._isAttack = true;
-            _distant.UpdateState(EState.Attack);
-        }
-        else
-        {
-            _attackState._isAttack = false;
-        }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = UnityEngine.Color.blue;
-        DrawBox(transform.position, new Vector2(_attackVisionX, _attackVisionY));
-    }
-
-    void DrawBox(Vector3 center, Vector2 size)
-    {
-        Vector2 halfSize = size / 2f;
-
-        Vector3 topLeft = center + new Vector3(-halfSize.x, halfSize.y);
-        Vector3 topRight = center + new Vector3(halfSize.x, halfSize.y);
-        Vector3 bottomRight = center + new Vector3(halfSize.x, -halfSize.y);
-        Vector3 bottomLeft = center + new Vector3(-halfSize.x, -halfSize.y);
-
-        Gizmos.DrawLine(topLeft, topRight);
-        Gizmos.DrawLine(topRight, bottomRight);
-        Gizmos.DrawLine(bottomRight, bottomLeft);
-        Gizmos.DrawLine(bottomLeft, topLeft);
     }
 }
