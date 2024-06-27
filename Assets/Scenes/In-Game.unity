@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 82427351}
   - component: {fileID: 82427350}
   - component: {fileID: 82427349}
+  - component: {fileID: 82427354}
   m_Layer: 8
   m_Name: Distant
   m_TagString: Enemy
@@ -418,8 +419,6 @@ MonoBehaviour:
   _attackState: {fileID: 82427351}
   _hittingState: {fileID: 82427350}
   _deadState: {fileID: 82427349}
-  _closeAttack: 0
-  _rangedAttack: 0
   _visionChecked: 0
   health: 100
 --- !u!114 &82427349
@@ -458,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb89cc9a27d6257459917c801b7e359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isAttack: 0
   _isAttackingCoroutineRunning: 0
   _attackInterval: 1.7
 --- !u!114 &82427352
@@ -475,12 +473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 129923802}
   _moveSpeed: 7.5
-  _attackReady: 0
-  _attackVisionX: 3
-  _attackVisionY: 1
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &82427353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,11 +485,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3177591e2589145815769f46bf7d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lookVisionX: 16
-  _lookVisionY: 6
+--- !u!114 &82427354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82427342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ce53ba843bf2c4abf31b6bc2a53112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackVisionX: 2.5
+  _attackVisionY: 1
+  _lookVisionX: 15
+  _lookVisionY: 7
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
 --- !u!1 &129923798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,8 +1553,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: 0.0048003197, y: 0.005449772, z: 0}
-    m_Extent: {x: 15.562799, y: 12.06175, z: 0}
+    m_Center: {x: 0.00075006485, y: -0.0016999245, z: 0}
+    m_Extent: {x: 15.566851, y: 12.067499, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
